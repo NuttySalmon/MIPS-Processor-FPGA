@@ -12,12 +12,14 @@ module mips (
     );
     
     wire       branch;
-    wire       jump;
-    wire       reg_dst;
+    wire [1:0] jump_src;
+    wire [1:0] reg_dst;
     wire       we_reg;
     wire       alu_src;
-    wire       dm2reg;
+    wire [2:0] rf_wd_src;
     wire [2:0] alu_ctrl;
+    wire       shift_lr;
+    wire       mul_en;
 
     datapath dp (
             .clk            (clk),
@@ -42,13 +44,15 @@ module mips (
             .opcode         (instr[31:26]),
             .funct          (instr[5:0]),
             .branch         (branch),
-            .jump           (jump),
+            .jump_src       (jump_src),
             .reg_dst        (reg_dst),
             .we_reg         (we_reg),
             .alu_src        (alu_src),
             .we_dm          (we_dm),
-            .dm2reg         (dm2reg),
-            .alu_ctrl       (alu_ctrl)
+            .rf_wd_src      (rf_wd_src),
+            .alu_ctrl       (alu_ctrl),
+            .shift_lr       (shift_lr),
+            .mul_en         (mul_en)
         );
 
 endmodule
