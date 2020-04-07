@@ -25,11 +25,11 @@ module auxdec (
                 6'b10_1010: ctrl = 9'b111_000_0_0_0; // SLT
                 
                 6'b01_1001: ctrl = 9'bxxx_000_1_0_0; // MULTU
-                6'b01_0000: ctrl = 9'bxxx_011_0_0_0; // MFHI
-                6'b01_0010: ctrl = 9'bxxx_100_1_0_0; // MFLO
+                6'b01_0000: ctrl = 9'bxxx_110_0_0_0; // MFHI
+                6'b01_0010: ctrl = 9'bxxx_101_1_0_0; // MFLO
                 6'b00_1000: ctrl = 9'bxxx_000_0_0_1; // JR
-                6'b00_0000: ctrl = 9'bxxx_101_0_0_0; // SLL
-                6'b00_0010: ctrl = 9'bxxx_101_0_1_0; // SRL
+                6'b00_0000: ctrl = 9'bxxx_100_0_0_0; // SLL
+                6'b00_0010: ctrl = 9'bxxx_100_0_1_0; // SRL
                 
                 default:    ctrl = {3'bxxx, {1'b0, rf_wd}, 3'b0};  //JAL and J
             endcase
