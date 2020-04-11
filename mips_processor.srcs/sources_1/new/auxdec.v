@@ -31,7 +31,7 @@ module auxdec (
                 6'b00_0000: ctrl = 9'bxxx_100_0_0_0; // SLL
                 6'b00_0010: ctrl = 9'bxxx_100_0_1_0; // SRL
                 
-                default:    ctrl = {3'bxxx, {1'b0, rf_wd}, 3'b0};  //JAL and J
+                default:    ctrl = {3'bxxx, {1'b0, rf_wd}, 3'b0};
             endcase
         endcase
     end
