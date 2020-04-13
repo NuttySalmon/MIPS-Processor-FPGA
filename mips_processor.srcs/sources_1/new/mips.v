@@ -12,24 +12,25 @@ module mips (
     );
     
     wire       branch;
-    wire [1:0] jump_src;
-    wire [1:0] reg_dst;
+    wire [1:0] jump_src; //changed
+    wire [1:0] reg_dst; //changed
     wire       we_reg;
     wire       alu_src;
     wire [2:0] rf_wd_src;
     wire [2:0] alu_ctrl;
-    wire       shift_lr;
-    wire       mul_en;
+    wire       shift_lr; //changed
+    wire       mul_en; //changed
+    wire [2:0] rf_wd_src; //changed
 
     datapath dp (
             .clk            (clk),
             .rst            (rst),
             .branch         (branch),
-            .jump           (jump),
+            .jump_src       (jump_src),
             .reg_dst        (reg_dst),
             .we_reg         (we_reg),
             .alu_src        (alu_src),
-            .dm2reg         (dm2reg),
+            .rf_wd_src      (rf_wd_src), //changed
             .alu_ctrl       (alu_ctrl),
             .ra3            (ra3),
             .instr          (instr),
@@ -37,7 +38,9 @@ module mips (
             .pc_current     (pc_current),
             .alu_out        (alu_out),
             .wd_dm          (wd_dm),
-            .rd3            (rd3)
+            .rd3            (rd3),
+            .mul_en         (mul_en), // changed
+            .shift_lr       (shift_lr) //changed
         );
 
     controlunit cu (

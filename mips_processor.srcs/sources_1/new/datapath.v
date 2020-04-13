@@ -2,15 +2,17 @@ module datapath (
         input  wire        clk,
         input  wire        rst,
         input  wire        branch,
-        input  wire        jump,
-        input  wire        reg_dst,
+        input  wire [1:0]  jump_src, //changed
+        input  wire [1:0]  reg_dst, //changed
         input  wire        we_reg,
         input  wire        alu_src,
-        input  wire        dm2reg,
+        input  wire [2:0]  rf_wd_src, //changed
         input  wire [2:0]  alu_ctrl,
         input  wire [4:0]  ra3,
         input  wire [31:0] instr,
         input  wire [31:0] rd_dm,
+        input  wire        mul_en, //changed
+        input  wire        shift_lr, //changed
         output wire [31:0] pc_current,
         output wire [31:0] alu_out,
         output wire [31:0] wd_dm,
@@ -30,6 +32,9 @@ module datapath (
     wire [31:0] alu_pb;
     wire [31:0] wd_rf;
     wire        zero;
+    wire [31:0] mul_lo; //changed
+    wire [31:0] mul_hi; //changed
+    wire [31:0] shift_out; //changed
     
     assign pc_src = branch & zero;
     assign ba = {sext_imm[29:0], 2'b00};
@@ -62,18 +67,20 @@ module datapath (
             .y              (pc_pre)
         );
 
-    mux2 #(32) pc_jmp_mux (
-            .sel            (jump),
+    mux3 #(32) pc_jmp_mux ( //changed
+            .sel            (jump_src),
             .a              (pc_pre),
             .b              (jta),
+            .c              (alu_pa),
             .y              (pc_next)
         );
 
     // --- RF Logic --- //
-    mux2 #(5) rf_wa_mux (
+    mux3 #(5) rf_wa_mux ( //changed
             .sel            (reg_dst),
             .a              (instr[20:16]),
             .b              (instr[15:11]),
+            .c              ('d31),
             .y              (rf_wa)
         );
 
@@ -112,11 +119,33 @@ module datapath (
         );
 
     // --- MEM Logic --- //
-    mux2 #(32) rf_wd_mux (
-            .sel            (dm2reg),
+    mux6 #(32) rf_wd_mux ( //changed
+            .sel            (rf_wd_src),
             .a              (alu_out),
             .b              (rd_dm),
+            .c              (pc_plus4),
+            .d              (shift_out),
+            .e              (mul_lo),
+            .f              (mul_hi),
             .y              (wd_rf)
+        );
+        
+    multiplier mul( //changed
+            .clk            (clk),
+            .en             (mul_en),
+            .a              (alu_pa),
+            .b              (wd_dm),
+            .lo             (mul_lo),
+            .hi             (mul_hi)   
+    
+        );
+    
+    shifter sl( //changed
+            .s              (alu_pa),
+            .shamt          (instr[10:6]),
+            .lr             (shift_lr),
+            .y              (shift_out)
+    
         );
 
 endmodule
