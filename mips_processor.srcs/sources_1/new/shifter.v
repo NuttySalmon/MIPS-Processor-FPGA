@@ -6,8 +6,8 @@ module shifter(
         output reg [31:0] y
     );
     
-    always @(s, shamt) begin
-        if (lr) y = s << shamt; 
-        else y = s >> shamt;
+    always @(s, shamt, lr) begin
+        if (lr) y = s >> shamt; 
+        else y = s << shamt;
     end
 endmodule

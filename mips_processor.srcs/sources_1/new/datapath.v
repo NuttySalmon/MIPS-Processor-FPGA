@@ -141,7 +141,7 @@ module datapath (
         );
     
     shifter sl( //changed
-            .s              (alu_pa),
+            .s              (alu_pb),
             .shamt          (instr[10:6]),
             .lr             (shift_lr),
             .y              (shift_out)
