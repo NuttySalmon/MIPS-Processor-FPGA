@@ -10,7 +10,7 @@ module maindec (
         output wire [1:0] alu_op
     );
 
-    reg [8:0] ctrl;
+    reg [10:0] ctrl;
 
     assign {branch, jump, reg_dst, we_reg, alu_src, we_dm, rf_wd, alu_op} = ctrl;
 
