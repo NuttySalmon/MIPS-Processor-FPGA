@@ -14,9 +14,9 @@ module mux6 #(parameter WIDTH = 8) (
             'd0: y = a;
             'd1: y = b;
             'd2: y = c;
-            'd3: y = d;
-            'd4: y = e;
-            'd5: y = f;        
+            'd4: y = d;
+            'd5: y = e;
+            'd6: y = f;        
             default: y = a;
         endcase
     end
