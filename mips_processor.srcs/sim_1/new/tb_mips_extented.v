@@ -1,3 +1,4 @@
+`timescale 1ns/1ns
 module tb_mips_extended;
     reg         clk;
     reg         rst;
@@ -21,7 +22,7 @@ module tb_mips_extended;
             .clk            (clk),
             .rst            (rst),
             .we_dm          (we_dm),
-            .ra3            ('h9),
+            .ra3            (ra3),
             .pc_current     (pc_current),
             .instr          (instr),
             .alu_out        (alu_out),
@@ -32,8 +33,8 @@ module tb_mips_extended;
 
     task tick; 
     begin 
-        clk = 1'b0; #5;
-        clk = 1'b1; #5;
+        clk = 1'b0; #100;
+        clk = 1'b1; #100;
     end
     endtask
 
@@ -66,10 +67,6 @@ module tb_mips_extended;
         instr = 32'h00004012; tick;//mflo $t0
         instr = 32'h00004810; tick;//mfhi $t1
         
-        instr = 32'h20020005; tick;//addi
-        ra3 = 'b00010;
-        value = rd3;
-        #5;
         //MFLO test
         ra3 = 'b01000;  //t0 
         mult_expect = var1 * var2;
@@ -113,8 +110,9 @@ module tb_mips_extended;
         instr = {32'h00084080}; tick; //sll $t0 t0 0x2
         ra3 = 'b01000;  //t0 
         expected = var1 << 2;
+        #50;
         value = rd3;
-        #5; test;    
+        test;    
 
         //SRL
         var1 = 16'b1110000;
@@ -122,7 +120,9 @@ module tb_mips_extended;
         instr = {32'h00084082}; tick; //srl $t0 t0 0x2
         ra3 = 'b01000;  //t0 
         expected = var1 >> 2;
+        #50;
         value = rd3;
-        #5; test;
+        test;
+        $finish;
     end
 endmodule
