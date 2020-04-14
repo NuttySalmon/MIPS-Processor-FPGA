@@ -1,0 +1,546 @@
+
+*** Running vivado
+    with args -log mips_fpga.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source mips_fpga.tcl
+
+
+****** Vivado v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source mips_fpga.tcl -notrace
+Command: synth_design -top mips_fpga -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 3808 
+WARNING: [Synth 8-976] rf_wd_src has already been declared [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips.v:23]
+WARNING: [Synth 8-2654] second declaration of rf_wd_src ignored [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips.v:23]
+INFO: [Synth 8-994] rf_wd_src is declared here [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips.v:19]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 774.297 ; gain = 239.391
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'mips_fpga' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips_fpga.v:1]
+INFO: [Synth 8-6157] synthesizing module 'clk_gen' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/clk_gen.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'clk_gen' (1#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/clk_gen.v:1]
+INFO: [Synth 8-6157] synthesizing module 'button_debouncer' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/button_debouncer.v:1]
+	Parameter depth bound to: 16 - type: integer 
+	Parameter history_max bound to: 65535 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'button_debouncer' (2#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/button_debouncer.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mips_top' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mips' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips.v:1]
+INFO: [Synth 8-6157] synthesizing module 'datapath' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/datapath.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dreg' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/dreg.v:1]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'dreg' (3#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/dreg.v:1]
+INFO: [Synth 8-6157] synthesizing module 'adder' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/adder.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'adder' (4#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux2' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mux2.v:1]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2' (5#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mux2.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux3' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mux3.v:1]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux3' (6#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mux3.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux3__parameterized0' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mux3.v:1]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux3__parameterized0' (6#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mux3.v:1]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/regfile.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (7#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/regfile.v:1]
+INFO: [Synth 8-6157] synthesizing module 'signext' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/signext.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'signext' (8#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/signext.v:1]
+INFO: [Synth 8-6157] synthesizing module 'alu' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/alu.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/alu.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (9#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/alu.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux6' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mux6.v:1]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux6' (10#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mux6.v:1]
+INFO: [Synth 8-6157] synthesizing module 'multiplier' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/multiplier.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'multiplier' (11#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/multiplier.v:1]
+INFO: [Synth 8-6157] synthesizing module 'shifter' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/shifter.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'shifter' (12#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/shifter.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'datapath' (13#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/datapath.v:1]
+INFO: [Synth 8-6157] synthesizing module 'controlunit' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/controlunit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'maindec' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/maindec.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'maindec' (14#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/maindec.v:1]
+INFO: [Synth 8-6157] synthesizing module 'auxdec' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/auxdec.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'auxdec' (15#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/auxdec.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'controlunit' (16#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/controlunit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mips' (17#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips.v:1]
+INFO: [Synth 8-6157] synthesizing module 'imem' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/imem.v:1]
+INFO: [Synth 8-3876] $readmem data file 'memfileLab7.dat' is read successfully [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/imem.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'imem' (18#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/imem.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dmem' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/dmem.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'dmem' (19#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/dmem.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mips_top' (20#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'hex_to_7seg' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/hex_to_7seg.v:1]
+INFO: [Synth 8-226] default block is never used [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/hex_to_7seg.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'hex_to_7seg' (21#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/hex_to_7seg.v:1]
+INFO: [Synth 8-6157] synthesizing module 'led_mux' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/led_mux.v:1]
+INFO: [Synth 8-226] default block is never used [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/led_mux.v:20]
+INFO: [Synth 8-6155] done synthesizing module 'led_mux' (22#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/led_mux.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mips_fpga' (23#1) [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/mips_fpga.v:1]
+WARNING: [Synth 8-3331] design datapath has unconnected port instr[31]
+WARNING: [Synth 8-3331] design datapath has unconnected port instr[30]
+WARNING: [Synth 8-3331] design datapath has unconnected port instr[29]
+WARNING: [Synth 8-3331] design datapath has unconnected port instr[28]
+WARNING: [Synth 8-3331] design datapath has unconnected port instr[27]
+WARNING: [Synth 8-3331] design datapath has unconnected port instr[26]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 821.023 ; gain = 286.117
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 821.023 ; gain = 286.117
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 821.023 ; gain = 286.117
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.042 . Memory (MB): peak = 821.023 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [F:/cmpe140/mips_processor/mips_processor.srcs/constrs_1/new/mips_fpga.xdc]
+Finished Parsing XDC File [F:/cmpe140/mips_processor/mips_processor.srcs/constrs_1/new/mips_fpga.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [F:/cmpe140/mips_processor/mips_processor.srcs/constrs_1/new/mips_fpga.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/mips_fpga_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/mips_fpga_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 938.141 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 938.141 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 938.141 ; gain = 403.234
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 938.141 ; gain = 403.234
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 938.141 ; gain = 403.234
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/multiplier.v:12]
+INFO: [Synth 8-5546] ROM "rom" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-327] inferring latch for variable 'y_reg' [F:/cmpe140/mips_processor/mips_processor.srcs/sources_1/new/alu.v:9]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 938.141 ; gain = 403.234
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     64 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 5     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 5     
+	               16 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 8     
+	   4 Input     32 Bit        Muxes := 1     
+	  25 Input     32 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 1     
+	   8 Input      9 Bit        Muxes := 1     
+	  12 Input      9 Bit        Muxes := 1     
+	   2 Input      9 Bit        Muxes := 2     
+	   4 Input      5 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module mips_fpga 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module clk_gen 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+Module button_debouncer 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module dreg 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
+Module adder 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+Module mux2 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module mux3 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 1     
+Module mux3__parameterized0 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input      5 Bit        Muxes := 1     
+Module regfile 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+Module alu 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   3 Input     32 Bit       Adders := 1     
++---Muxes : 
+	   6 Input      1 Bit        Muxes := 1     
+Module multiplier 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     64 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+Module shifter 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module maindec 
+Detailed RTL Component Info : 
++---Muxes : 
+	   8 Input      9 Bit        Muxes := 1     
+Module auxdec 
+Detailed RTL Component Info : 
++---Muxes : 
+	  12 Input      9 Bit        Muxes := 1     
+	   2 Input      9 Bit        Muxes := 2     
+Module imem 
+Detailed RTL Component Info : 
++---Muxes : 
+	  25 Input     32 Bit        Muxes := 1     
+Module led_mux 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input     12 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+DSP Report: Generating DSP dp/mul/lo0, operation Mode is: A*B.
+DSP Report: operator dp/mul/lo0 is absorbed into DSP dp/mul/lo0.
+DSP Report: operator dp/mul/lo0 is absorbed into DSP dp/mul/lo0.
+DSP Report: Generating DSP dp/mul/lo0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator dp/mul/lo0 is absorbed into DSP dp/mul/lo0.
+DSP Report: operator dp/mul/lo0 is absorbed into DSP dp/mul/lo0.
+DSP Report: Generating DSP dp/mul/lo0, operation Mode is: A*B.
+DSP Report: operator dp/mul/lo0 is absorbed into DSP dp/mul/lo0.
+DSP Report: operator dp/mul/lo0 is absorbed into DSP dp/mul/lo0.
+DSP Report: Generating DSP dp/mul/lo0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator dp/mul/lo0 is absorbed into DSP dp/mul/lo0.
+DSP Report: operator dp/mul/lo0 is absorbed into DSP dp/mul/lo0.
+WARNING: [Synth 8-3331] design imem has unconnected port a[5]
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[31]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[30]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[29]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[28]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[27]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[26]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[25]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[24]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[23]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[22]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[21]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[20]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[19]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[18]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[17]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[16]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[15]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[14]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[13]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[12]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[11]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[10]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[9]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[8]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[7]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[6]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[5]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[4]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[3]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[2]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[1]) is unused and will be removed from module mips_fpga.
+WARNING: [Synth 8-3332] Sequential element (mips_top/mips/dp/alu/y_reg[0]) is unused and will be removed from module mips_fpga.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 938.141 ; gain = 403.234
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------+----------------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object                 | Inference | Size (Depth x Width) | Primitives     | 
++------------+----------------------------+-----------+----------------------+----------------+
+|mips_fpga   | mips_top/mips/dp/rf/rf_reg | Implied   | 32 x 32              | RAM32M x 18	   | 
+|mips_fpga   | mips_top/dmem/ram_reg      | Implied   | 64 x 32              | RAM64X1S x 32	 | 
++------------+----------------------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+
+DSP: Preliminary Mapping	Report (see note below)
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|multiplier  | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 30     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|multiplier  | (PCIN>>17)+A*B | 18     | 16     | -      | -      | 47     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 963.684 ; gain = 428.777
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 983.926 ; gain = 449.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping	Report
++------------+----------------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object                 | Inference | Size (Depth x Width) | Primitives     | 
++------------+----------------------------+-----------+----------------------+----------------+
+|mips_fpga   | mips_top/mips/dp/rf/rf_reg | Implied   | 32 x 32              | RAM32M x 18	   | 
+|mips_fpga   | mips_top/dmem/ram_reg      | Implied   | 64 x 32              | RAM64X1S x 32	 | 
++------------+----------------------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1004.695 ; gain = 469.789
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1020.582 ; gain = 485.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1020.582 ; gain = 485.676
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1020.582 ; gain = 485.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1020.582 ; gain = 485.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1020.582 ; gain = 485.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1020.582 ; gain = 485.676
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |CARRY4   |    56|
+|3     |DSP48E1  |     4|
+|4     |LUT1     |     2|
+|5     |LUT2     |    53|
+|6     |LUT3     |    36|
+|7     |LUT4     |    71|
+|8     |LUT5     |   152|
+|9     |LUT6     |   459|
+|10    |MUXF7    |    15|
+|11    |RAM32M   |    18|
+|12    |RAM64X1S |    32|
+|13    |FDCE     |    32|
+|14    |FDRE     |   132|
+|15    |IBUF     |    12|
+|16    |OBUF     |    13|
++------+---------+------+
+
+Report Instance Areas: 
++------+-------------------+-----------------+------+
+|      |Instance           |Module           |Cells |
++------+-------------------+-----------------+------+
+|1     |top                |                 |  1089|
+|2     |  bd               |button_debouncer |    20|
+|3     |  clk_gen          |clk_gen          |    56|
+|4     |  led_mux          |led_mux          |    29|
+|5     |  mips_top         |mips_top         |   923|
+|6     |    dmem           |dmem             |    32|
+|7     |    mips           |mips             |   891|
+|8     |      dp           |datapath         |   891|
+|9     |        alu        |alu              |    14|
+|10    |        mul        |multiplier       |   142|
+|11    |        pc_plus_4  |adder            |    11|
+|12    |        pc_plus_br |adder_0          |     8|
+|13    |        pc_reg     |dreg             |   675|
+|14    |        rf         |regfile          |    41|
++------+-------------------+-----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1020.582 ; gain = 485.676
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 34 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:36 ; elapsed = 00:00:46 . Memory (MB): peak = 1020.582 ; gain = 368.559
+Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:49 . Memory (MB): peak = 1020.582 ; gain = 485.676
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1020.582 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 125 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1020.582 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 50 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 18 instances
+  RAM64X1S => RAM64X1S (RAMS64E): 32 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+67 Infos, 42 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:56 . Memory (MB): peak = 1020.582 ; gain = 723.188
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1020.582 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'F:/cmpe140/mips_processor/mips_processor.runs/synth_1/mips_fpga.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file mips_fpga_utilization_synth.rpt -pb mips_fpga_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 13 21:21:50 2020...

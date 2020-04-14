@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Mon Apr 13 21:22:00 2020
+# Process ID: 22848
+# Current directory: F:/cmpe140/mips_processor/mips_processor.runs/impl_1
+# Command line: vivado.exe -log mips_fpga.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source mips_fpga.tcl -notrace
+# Log file: F:/cmpe140/mips_processor/mips_processor.runs/impl_1/mips_fpga.vdi
+# Journal file: F:/cmpe140/mips_processor/mips_processor.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source mips_fpga.tcl -notrace
