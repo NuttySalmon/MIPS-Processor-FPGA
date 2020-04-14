@@ -24,7 +24,7 @@ module auxdec (
                 6'b10_0010: ctrl = 9'b110_000_0_0_0; // SUB
                 6'b10_1010: ctrl = 9'b111_000_0_0_0; // SLT
                 
-                6'b01_1001: ctrl = 9'bxxx_000_1_0_0; // MULTU
+                6'b01_1001: ctrl = 9'bxxx_000_0_1_0; // MULTU
                 6'b01_0000: ctrl = 9'bxxx_110_0_0_0; // MFHI
                 6'b01_0010: ctrl = 9'bxxx_101_0_0_0; // MFLO
                 6'b00_1000: ctrl = 9'bxxx_000_0_0_1; // JR
