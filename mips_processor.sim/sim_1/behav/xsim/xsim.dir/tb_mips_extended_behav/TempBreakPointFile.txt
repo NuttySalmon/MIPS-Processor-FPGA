@@ -1,2 +1,0 @@
-Breakpoint File Version 1.0
-126 true C:/Users/thoma/Vivado/Single-Cycle-MIPS-Processor-FPGA/mips_processor.srcs/sim_1/new/tb_mips_extented.v

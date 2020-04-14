@@ -1,2 +1,5 @@
 /.vscode
 /.Xil
+*.xpr
+/mips_processor.cache
+/mips_processor.sim
