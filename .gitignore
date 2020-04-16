@@ -1,5 +1,8 @@
 /.vscode
 /.Xil
 *.xpr
-/mips_processor.cache
-/mips_processor.sim
+/*.cache/
+/*.sim/
+/*.hw/
+/*.runs/
+/*.ip_user_files/
