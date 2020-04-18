@@ -1,7 +1,8 @@
-module tb_mips_extended
+`timescale 1ns/1ns
+module tb_mips_extended;
     reg         clk;
     reg         rst;
-    reg         ra3;
+    reg  [4:0]  ra3;
     wire        we_dm;
     
     wire [31:0] pc_current;
@@ -32,8 +33,8 @@ module tb_mips_extended
 
     task tick; 
     begin 
-        clk = 1'b0; #5;
-        clk = 1'b1; #5;
+        clk = 1'b0; #100;
+        clk = 1'b1; #100;
     end
     endtask
 
@@ -47,38 +48,37 @@ module tb_mips_extended
     
     task test;
         if (expected != value) begin
-            $display('ERROR');
+            $display("ERROR");
             error_count = error_count + 1;
         end
-    end
     endtask
 
     initial begin
         reset;
         
-        rd_dm = 'b0;
-
+        //rd_dm = 'b0;
+        //ra3 = 'b00000;
         //MULTU
-        var1 = 16'hFFFF;
-        var2 = 16'h0010;
+        var1 = 16'h5000;
+        var2 = 16'h10;
         instr = {16'h2008, var1}; tick; // addi $t0, $zero, 0xFFFF
         instr = {16'h2009, var2}; tick; //addi $t1, $zero, 0x10
         instr = 32'h01090019; tick; //multu $t0, $t1
         instr = 32'h00004012; tick;//mflo $t0
         instr = 32'h00004810; tick;//mfhi $t1
-
+        
         //MFLO test
         ra3 = 'b01000;  //t0 
-        mult_expect = var1 * var2;
-        value = rd3;
+        mult_expect = var1 * var2; 
+        #5; value = rd3;
         expected = mult_expect[31:0];
-        #5; test;
+        test;
 
         //MFHI test
         ra3 = 'b01001; //t1
-        value = rd3;
-        expected = mult_expect[63:32]);
-        #5; test;
+        #5; value = rd3;
+        expected = mult_expect[63:32];
+         test;
 
         //JAL
         reset;
@@ -89,14 +89,14 @@ module tb_mips_extended
 
         //test new pc
         value = pc_current;
-        expected = {var1, 2'00};
+        expected = {var1, 2'b00};
         #5; test;
 
         //test ra value
         ra3 = 'd31; // $ra
-        value = rd3;
+        #5; value = rd3;
         expected = 'h10;
-        #5; test;
+        test;
 
         //JR
         instr = 32'h03E00008; tick; //jr $ra
@@ -107,20 +107,22 @@ module tb_mips_extended
         //SLL
         var1 = 16'b1110000;
         instr = {16'h2008, var1}; tick; //addi $t0, $0, 0x70
-        instr = {16'h00084080}; tick; //sll $t0 t0 0x2
+        instr = {32'h00084080}; tick; //sll $t0 t0 0x2
         ra3 = 'b01000;  //t0 
         expected = var1 << 2;
+        #50;
         value = rd3;
-        #5; test;    
+        test;    
 
         //SRL
         var1 = 16'b1110000;
         instr = {16'h2008, var1}; tick; //addi $t0, $0, 0x70
-        instr = {16'h00084082}; tick; //srl $t0 t0 0x2
+        instr = {32'h00084082}; tick; //srl $t0 t0 0x2
         ra3 = 'b01000;  //t0 
         expected = var1 >> 2;
+        #50;
         value = rd3;
-        #5; test;
+        test;
+        $finish;
     end
 endmodule
-
