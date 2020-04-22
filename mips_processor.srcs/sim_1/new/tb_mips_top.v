@@ -40,12 +40,8 @@ module tb_mips_top;
     
     initial begin
         reset;
-        while(pc_current != 32'h18) begin
-            if (pc_current == 'h54) 
-                tick;
-            tick;
-        end
-           
+        while(pc_current != 32'h18) tick;
+         
         $finish;
     end
 
