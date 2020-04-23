@@ -1,22 +1,16 @@
-module mips_top (
+module System (
         input  wire        clk,
         input  wire        rst,
-        input  wire [4:0]  ra3,
-        input  wire        reset,
         input  wire [31:0] gpI1, gpI2,
-        output wire        we_dm,
-        output wire [31:0] pc_current,
-        output wire [31:0] instr,
-        output wire [31:0] rw_addr,
-        output wire [31:0] w_data,
-        output wire [31:0] rd_dm,
-        output wire [31:0] rd3,
         output wire [31:0] gpO1, gpO2
     );
 
     wire [31:0] DMemData, FactData, GPIO;
     wire we1, we2, wem;
     wire [1:0] wd_sel;
+    wire [4:0] ra3;
+    wire we_dm;
+    wire [31:0] rd3, rw_addr, w_data, instr, pc_current;
  
     mips mips (
             .clk            (clk),
@@ -54,7 +48,7 @@ module mips_top (
         );
   
     fact_wrapper fact (
-            .RST            (reset),
+            .RST            (rst),
             .clk            (clk),
             .WE             (we1),
             .A              (rw_addr[3:2]),
@@ -63,7 +57,7 @@ module mips_top (
         );
  
     GPIO gpio (
-            .rst            (reset),
+            .rst            (rst),
             .clk            (clk),
             .WE             (we2),
             .A              (rw_addr[3:2]),
@@ -75,7 +69,7 @@ module mips_top (
             .gpO2           (gpO2)
         );
     
-    mux4 mem_mux(
+    mux4 #(32) mem_mux(
             .a              (DMemData),
             .b              (DMemData),
             .c              (FactData),
