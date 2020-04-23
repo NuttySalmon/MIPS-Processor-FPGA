@@ -16,7 +16,4 @@ module mux4 #(parameter WIDTH = 32) (
             default: y = a;
         endcase
     end
-    
-
-
 endmodule
