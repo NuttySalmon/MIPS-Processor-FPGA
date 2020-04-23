@@ -1,26 +1,4 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 04/23/2020 01:05:45 PM
-// Design Name: 
-// Module Name: ad_dec
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
-module ad_dec(
+module AddressDecoder(
         input [0:9] a,
         input we,
         output we1,
@@ -30,7 +8,7 @@ module ad_dec(
     );
     
     reg [2:0] we_ctrl ;
-    assign {we1, we2, wem} = we_ctrl;
+    assign {wem, we1, we2} = we_ctrl;
  
     always@(a, we) begin
         case (a[9:6])
