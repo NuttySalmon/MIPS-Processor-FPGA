@@ -37,12 +37,12 @@ module fact_top(
         .q          (n)
     );
     
-    dreg_en #(4) go_reg (
+    dreg_en #(1) go_reg (
         .clk        (clk),
         .rst        (rst),
         .en         (WE2),
-        .d          (WD),
-        .q          ({3'b0, go})
+        .d          (WD[0]),
+        .q          (go)
     );
     
     dreg_en #(1) gopulse_reg (
