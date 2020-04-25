@@ -47,12 +47,12 @@ module System (
             .q              (DMemData)
         );
   
-    fact_wrapper fact (
+    fact_top fact (
             .RST            (rst),
             .clk            (clk),
             .WE             (we1),
             .A              (rw_addr[3:2]),
-            .WD             (w_data),
+            .WD             (w_data[3:0]),
             .RD             (FactData)
         );
  
