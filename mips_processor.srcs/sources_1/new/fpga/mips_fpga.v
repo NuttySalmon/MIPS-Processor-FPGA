@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 04/23/2020 12:57:56 PM
+// Create Date: 04/25/2020 01:17:50 PM
 // Design Name: 
-// Module Name: SR_reg
+// Module Name: mips_fpga
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,17 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module SR_reg(
-    input wire rst,
-    input wire clk,
-    input wire s,
-    input wire r,
-    output reg q
-    
+module mips_fpga(
+
     );
-    
-    always @(posedge clk, posedge rst) begin
-        if (rst) q <= 1'b0;
-        else q <= (~r) & (s|q); //added ~
-    end
 endmodule

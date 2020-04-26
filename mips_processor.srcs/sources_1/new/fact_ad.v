@@ -56,5 +56,6 @@ module fact_ad(
                 WE2 = 1'bx;
             end  
         endcase
-     end                                
+     end 
+     assign Rdsel = A;                               
 endmodule

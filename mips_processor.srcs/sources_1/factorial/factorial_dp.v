@@ -46,7 +46,7 @@ module factorial_dp(
     );
 
     MUL multi(
-        .X({38'b0, n}),
+        .X({28'b0, n}),
         .Y(Y),
         .Z(product)
     );

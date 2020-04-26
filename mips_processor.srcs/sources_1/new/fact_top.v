@@ -23,7 +23,7 @@
 module fact_top(
     input wire clk,
     input wire rst,
-    input wire [3:0] A,
+    input wire [1:0] A,
     input wire WE,
     input wire [3:0] WD,
     output wire [31:0] RD
@@ -43,7 +43,7 @@ module fact_top(
     //assign go_pad = {3'b0, go};
     
     fact_ad fact_add_dec (
-        .A          (A[3:2]),
+        .A          (A),
         .WE         (WE),
         .WE1        (WE1),
         .WE2        (WE2),
@@ -59,12 +59,12 @@ module fact_top(
         .q          (n)
     );
     
-    dreg_en #(4) go_reg (
+    dreg_en #(1) go_reg (
         .clk        (clk),
         .rst        (rst),
         .en         (WE2),
-        .d          (WD),
-        .q          ({3'b0, go})
+        .d          (WD[0]),
+        .q          (go)
     );
     
     dreg_en #(1) gopulse_reg (
@@ -77,7 +77,7 @@ module fact_top(
     
     factorial fact(
         .CLK        (clk),
-        .Go         (go),
+        .Go         (gopulse), //gopulse
         .in         (n),
         .out        (nf),
         .CS         (CS),
