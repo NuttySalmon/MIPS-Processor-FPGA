@@ -1,5 +1,5 @@
 module AddressDecoder(
-        input [0:9] a,
+        input [9:0] a,
         input we,
         output we1,
         output we2,
