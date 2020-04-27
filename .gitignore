@@ -8,4 +8,5 @@
 /*.ip_user_files/
 *.jou
 *.log
+*.str
 writeout_project.tcl
