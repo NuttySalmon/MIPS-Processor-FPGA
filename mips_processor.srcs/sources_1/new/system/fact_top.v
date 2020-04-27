@@ -1,3 +1,25 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 04/23/2020 01:06:22 PM
+// Design Name: 
+// Module Name: fact_top
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
 module fact_top(
     input wire clk,
     input wire rst,
@@ -55,7 +77,7 @@ module fact_top(
     
     factorial fact(
         .CLK        (clk),
-        .Go         (go),
+        .Go         (gopulse), //gopulse
         .in         (n),
         .out        (nf),
         .CS         (CS),
