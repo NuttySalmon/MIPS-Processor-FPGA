@@ -8,7 +8,7 @@ module imem (
     initial begin
         //$readmemh ("memfileLab7.dat", rom);
    
-        $readmemh ("memfileLab7.dat", rom);
+        $readmemh ("inst_machine_code.dat", rom);
     end
 
     assign y = rom[a];
