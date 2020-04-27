@@ -29,7 +29,7 @@ module tb_gpio;
     reg [31:0] tb_gpI1, tb_gpI2;
     wire [31:0] tb_gpO1, tb_gp02;
     
-    gpio DUT(
+    GPIO DUT(
         .clk        (tb_clk),
         .rst        (tb_rst),
         .A          (tb_A),
