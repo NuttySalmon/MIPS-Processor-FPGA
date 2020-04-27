@@ -21,12 +21,15 @@
 
 
 module tb_fact_top;
-
+    
+    integer n, i=1, error=0;
     reg tb_clk, tb_rst;
     reg [1:0] tb_A;
     reg tb_WE;
     reg [3:0] tb_WD;
     wire [31:0] tb_RD; 
+    reg [31:0] expected, factorial_result;
+    
     
     fact_top DUT(
         .clk        (tb_clk),
@@ -48,38 +51,75 @@ module tb_fact_top;
     begin 
         tb_rst = 1'b0; #5;
         tb_rst = 1'b1; #5;
-        tb_rst = 1'b0;
+        tb_rst = 1'b0; #5;
     end
     endtask
     
-    initial begin
-        reset;
-        tb_WE = 1'b1;
-        tb_WD = 4'b0011;
-        
-        tb_A = 2'b00;
-        tick;
-        
-        tb_A = 2'b01;
-        tick;
-        
-        tb_A = 2'b10;
-        tick;
-        tick;
-        tick;
-        tick;
-        tick;
-        tick;
-        tick;
-        tick;
-        tick;
-        tick;
-        
-        tb_A = 2'b11;
-        tick;
+    task check;
+        if (expected != tb_RD) begin
+            $display("ERROR");
+            error = error +1;
+        end
+    endtask
+    
+    task cal_fact; begin
+        factorial_result = 1;
+        for(i = 1; i <=n; i=i+1)
+            factorial_result =  factorial_result  * i;
+        #5;
+    end
+    endtask
 
-        
-        
+    initial begin 
+        for (n=0; n <= 12; n=n+1) begin
+            reset; // reset
+            
+            // read go
+            tb_WE = 1'b0;
+            tb_A = 2'b01;
+            tb_WD = 1'b1;
+            tick;
+            
+            // check go
+            expected = 'b0; check;
+            
+            //set n
+            tb_WE = 1'b1; 
+            tb_A = 2'b00;
+            tb_WD = n;
+            tick;
+            
+            // read n
+            tb_WE = 1'b1;
+            tick;
+            
+            //check n
+            expected = n; check;
+            
+            //assert go
+            tb_WD = 1'b1;
+            tb_A = 2'b01;
+            tick;
+            
+            // read go
+            tb_WE = 1'b0;
+            tick;
+            
+            //check go
+            expected = 'b1; check;
+            
+            //tick while not done or error
+            tb_A = 2'b10; #5
+            while (tb_RD == 'b0)
+                tick;
+            
+            //read result
+            tb_A = 2'b11;
+            tick;
+            
+            cal_fact;
+            expected = factorial_result; check;
+        end
         $finish;
     end
 
