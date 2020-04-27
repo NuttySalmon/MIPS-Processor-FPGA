@@ -17,11 +17,11 @@ module GPIO(
     wire [1:0] rd_sel;
     
     AddressDecoderGpio gpio_ad (
-        .A          (A),
-        .WE         (we),
-        .WE1        (we1),
-        .WE2        (we2),
-        .Rdsel      (rd_sel)
+        .a          (A),
+        .we         (we),
+        .we1        (we1),
+        .we2        (we2),
+        .rd_sel      (rd_sel)
     );       
             
     dreg_en #(32) dreg_gpio (

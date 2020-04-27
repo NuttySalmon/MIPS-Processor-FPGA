@@ -24,7 +24,7 @@ module tb_gpio;
     reg tb_clk, tb_rst;
     reg [1:0] tb_A;
     reg tb_WE;
-    reg [3:0] tb_WD;
+    reg [31:0] tb_WD;
     wire [31:0] tb_RD;
     reg [31:0] tb_gpI1, tb_gpI2;
     wire [31:0] tb_gpO1, tb_gp02;
@@ -33,9 +33,9 @@ module tb_gpio;
         .clk        (tb_clk),
         .rst        (tb_rst),
         .A          (tb_A),
-        .WE         (tb_WE),
-        .WD         (tb_WD),
-        .RD         (tb_RD),
+        .we         (tb_WE),
+        .wd         (tb_WD),
+        .rd         (tb_RD),
         .gpI1       (tb_gpI1),
         .gpI2       (tb_gpI2),
         .gpO1       (tb_gpO1),
@@ -66,15 +66,21 @@ module tb_gpio;
         tb_WE = 1'b1;
         tb_A = 2'b00; //gpI1
         tick;
+        tick;
         
         tb_A = 2'b01; //gpI2
+        tick;
         tick;
         
         tb_A = 2'b10; //gpO1
         tick;
+        tick;
         
         tb_A = 2'b11; //gpO2
         tick;
+        tick;
+        
+        $finish;
     
     end    
     

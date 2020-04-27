@@ -1,9 +1,9 @@
 `timescale 1ns / 1ps
 module AddressDecoderGpio(
-       input [1:0] a,
-       input we,
-       output we1,
-       output we2,
+       input wire [1:0] a,
+       input wire we,
+       output wire we1,
+       output wire we2,
        output reg [1:0] rd_sel
    );
    
