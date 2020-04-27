@@ -1,25 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 04/27/2020 12:06:34 PM
-// Design Name: 
-// Module Name: tb_gpio
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
 module tb_gpio;
     reg tb_clk, tb_rst;
     reg [1:0] tb_A;
@@ -52,9 +31,8 @@ module tb_gpio;
 
     task reset;
     begin 
-        tb_rst = 1'b0; #5;
         tb_rst = 1'b1; #5;
-        tb_rst = 1'b0;
+        tb_rst = 1'b0; #5;
     end
     endtask
     
@@ -66,18 +44,14 @@ module tb_gpio;
         tb_WE = 1'b1;
         tb_A = 2'b00; //gpI1
         tick;
-        tick;
         
         tb_A = 2'b01; //gpI2
-        tick;
         tick;
         
         tb_A = 2'b10; //gpO1
         tick;
-        tick;
         
         tb_A = 2'b11; //gpO2
-        tick;
         tick;
         
         $finish;
