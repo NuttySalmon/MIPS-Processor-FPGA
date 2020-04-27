@@ -4,7 +4,7 @@ module GPIO(
     input wire clk,
     input wire rst,
     input wire we,
-    input wire [3:2] A,
+    input wire [1:0] A,
     input wire [31:0]gpI1,
     input wire [31:0]gpI2,
     input wire [31:0] wd,

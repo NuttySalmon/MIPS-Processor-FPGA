@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 module AddressDecoderGpio(
-       input [3:2] a,
+       input [1:0] a,
        input we,
        output we1,
        output we2,
@@ -11,7 +11,7 @@ module AddressDecoderGpio(
    assign {we1, we2} = we_ctrl;
 
    always@(a, we) begin
-       case (a[3:2])
+       case (a)
            'h0: begin //gpI1 
                    rd_sel = 'b00; 
                    we_ctrl = 'b0_0;
