@@ -5,6 +5,8 @@ module disp_hex_mux(
         input [7:0] sseg
     );
     
+    wire [7:0] digit3, digit2, digit1, digit0;
+    
     hex_to_7seg hex_7_3 (
             .HEX                (hex0),
             .s                  (digit3)

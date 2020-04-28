@@ -46,12 +46,13 @@ module fpga_top (
         .y(hex),
         .sel(dispSe)
     );
-        
+   
+    
     disp_hex_mux disp_unit(
-        .hex0(hex[3:0]),
-        .hex1(hex[7:4]),
-        .hex2(hex[11:8]),
-        .hex3(hex[15:12]),
+        .hex0(hex[15:12]),
+        .hex1(hex[11:8]),
+        .hex2(hex[7:4]),
+        .hex3(hex[3:0]),
         .clk(clk_5KHz),
         .rst(rst),
         .an(LEDSEL),
