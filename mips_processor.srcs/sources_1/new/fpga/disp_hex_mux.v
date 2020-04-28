@@ -24,7 +24,6 @@ module disp_hex_mux(
             .HEX                (hex3),
             .s                  (digit0)
         );
-        
     
     led_mux led_mux (
             .clk                (clk),

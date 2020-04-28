@@ -1,36 +1,22 @@
 module fpga_top (
         input  wire       clk,
         input  wire       rst,
-        input  wire       button,
-        input  wire [4:0] switches,
-        output wire       we_dm,
-        output wire [4:0] ld,
+//        input  wire       button,
+        input  wire       sel,
+        input  wire [3:0] n,
+        output wire       dispSe,
+        output wire       factErr,
         output wire [3:0] LEDSEL,
         output wire [7:0] LEDOUT
     );
     
-    wire [31:0] gpO1, gpO2;
-    wire dispSe, factErr;
+    wire [31:0] gpO1, gpO2;    
+    assign dispSe = gpO1[4];
+    assign factErr = gpO1[0];
     
-    assign {dispSe, factErr} = gpO1[1:0];
-    assign LD = {dispSe, {4{factErr}}} ;
-    
-    reg  [15:0] hex;
+    wire  [15:0] hex;
     wire        clk_sec;
     wire        clk_5KHz;
-    wire        clk_pb;
-
-    wire [7:0]  digit0;
-    wire [7:0]  digit1;
-    wire [7:0]  digit2;
-    wire [7:0]  digit3;
-
-    wire [31:0] pc_current;
-    wire [31:0] instr;
-    wire [31:0] alu_out;
-    wire [31:0] wd_dm;
-    wire [31:0] rd_dm;
-    wire [31:0] dispData;
 
     clk_gen clk_gen (
             .clk100MHz          (clk),
@@ -39,25 +25,25 @@ module fpga_top (
             .clk_5KHz           (clk_5KHz)
         );
 
-    button_debouncer bd (
-            .clk                (clk_5KHz),
-            .button             (button),
-            .debounced_button   (clk_pb)
-        );
+//    button_debouncer bd (
+//            .clk                (clk_5KHz),
+//            .button             (button),
+//            .debounced_button   (clk_pb)
+//        );
 
     System system (
-            .clk                (clk_pb),
+            .clk                (clk_5KHz),
             .rst                (rst),
-            .gpI1               ({28'b0, switches[4:0]}),
+            .gpI1               ({27'b0, {sel, n[3:0]}}),
             .gpI2               (gpO1),
             .gpO1               (gpO1),
             .gpO2               (gpO2)
         );
 
     mux2 #(16) disp_mux(
-        .a(gpO1[15:0]),
+        .a(gpO2[15:0]),
         .b(gpO2[31:16]),
-        .y(hex[15:0]),
+        .y(hex),
         .sel(dispSe)
     );
         
