@@ -57,5 +57,11 @@ module mips (
             .shift_lr       (shift_lr),
             .mul_en         (mul_en)
         );
-
+    
+    // --- Hazard Unit --- //
+    // TODO: needs more wires in later stages
+    hazard_unit HU(
+        .StallF             (StallF)
+    ); 
+    
 endmodule

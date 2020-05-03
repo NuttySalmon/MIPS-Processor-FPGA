@@ -120,6 +120,8 @@ module tb_fact_top;
             cal_fact;
             expected = factorial_result; check;
         end
+        
+        //13
         $finish;
     end
 
