@@ -10,3 +10,4 @@
 *.log
 *.str
 writeout_project.tcl
+/mips_processor/
