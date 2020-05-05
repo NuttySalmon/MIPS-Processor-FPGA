@@ -14,6 +14,7 @@ module datapath (
 //        input  wire [31:0] rd_dm,
         input  wire        mul_en, 
         input  wire        shift_lr, 
+        input  wire [2:0] dmem_rd,
         output wire [31:0] pc_current,
 //        output wire [31:0] alu_out,
         output wire [31:0] wd_dm,
@@ -29,7 +30,7 @@ module datapath (
     wire        pc_src;
     wire [31:0] pc_pre;
 
-    wire [31:0] pc_plus4, pc_plus4_1, pc_plus4_2, pc_plus4_3;
+    wire [31:0] pc_plus4, pc_plus4_1, pc_plus4_2, pc_plus4_3, pc_plus4_4;
     wire [31:0] pc_next;
     wire [31:0] sext_imm, sext_imm_2;
     wire [31:0] bta;
@@ -45,7 +46,7 @@ module datapath (
     wire [31:0] instr, instr_2;
     wire [31:0] ad, bd, ae, be;
     wire        we_dm_1;
-    wire [2:0]  rf_wd_src_1, rf_wd_src_2;
+    wire [2:0]  rf_wd_src_1, rf_wd_src_2, rf_wd_src_3;
     wire        mul_en_1;
     wire        alu_src_1;
     wire [2:0]  alu_ctrl_1;
@@ -54,6 +55,13 @@ module datapath (
     wire [1:0]  reg_dst_1;
     wire [31:0] alu_out, alu_out_1;
     wire [31:0] alu_pb;
+    wire [31:0]  mul_lo_wb;
+    wire [31:0]  mul_hi_wb;
+    wire [31:0]  dmem_wb  ;
+    wire [31:0]  alu_wb   ;
+    wire [31:0]  sl_wb    ;
+        
+        
     assign jta = {pc_plus4[31:28], instr[25:0], 2'b00};
     
     // --- IF Logic --- //
@@ -231,48 +239,68 @@ module datapath (
        );
 
     exe_mem_reg exe_mem(
-      .mul_en       (mul_en      ),
-      .clk          (clk         ),
-      .rst          (rst         ),
-      .we_reg_1     (we_reg_1    ),   
-      .we_dm_1      (we_dm_1     ),
-      .rf_wd_src_1  (rf_wd_src_1 ),   
-      .pc_plus4_2   (pc_plus4_2  ),   
-      .wd_dm        (wd_dm       ),
-      .mul_lo       (mul_lo      ),   
-      .mul_hi       (mul_hi      ), 
-      .alu_out      (alu_out     ), 
-      .shift_out    (shift_out   ),
-      .rf_wa        (rf_wa       ),
-      .rf_wd_src_2  (rf_wd_src_2 ),   
-      .pc_plus4_3   (pc_plus4_3  ),   
-      .dem_we       (dem_we      ),
-      .dmem_wd      (dmem_wd     ),   
-      .mul_lo_1     (mul_lo_1    ),   
-      .mul_hi_1     (mul_hi_1    ),   
-      .alu_out_1    (alu_out_1   ),   
-      .shift_out_1  (shift_out_1 ),   
-      .rf_wa_1      (rf_wa_1     ),   
-      .we_reg_2     (we_reg_2    )
+      .mul_en       (mul_en     ),
+      .clk          (clk        ),
+      .rst          (rst        ),
+      .we_reg_1     (we_reg_1   ),   
+      .we_dm_1      (we_dm_1    ),
+      .rf_wd_src_1  (rf_wd_src_1),   
+      .pc_plus4_2   (pc_plus4_2 ),   
+      .wd_dm        (wd_dm      ),
+      .mul_lo       (mul_lo     ),   
+      .mul_hi       (mul_hi     ), 
+      .alu_out      (alu_out    ), 
+      .shift_out    (shift_out  ),
+      .rf_wa        (rf_wa      ),
+      .rf_wd_src_2  (rf_wd_src_2),   
+      .pc_plus4_3   (pc_plus4_3 ),   
+      .dem_we       (dem_we     ),
+      .dmem_wd      (dmem_wd    ),   
+      .mul_lo_1     (mul_lo_1   ),   
+      .mul_hi_1     (mul_hi_1   ),   
+      .alu_out_1    (alu_out_1  ),   
+      .shift_out_1  (shift_out_1),   
+      .rf_wa_1      (rf_wa_1    ),   
+      .we_reg_2     (we_reg_2   )
+    );
+
+    // --- MEM --- //
+    mem_wb_reg mem_wb(
+        .clk         ( clk        ),
+        .rst         ( rst        ),
+        .rf_wd_src_2 ( rf_wd_src_2),
+        .pc_plus4_3  ( pc_plus4_3 ),
+        .mul_lo_1    ( mul_lo_1   ),
+        .mul_hi_1    ( mul_hi_1   ),
+        .dmem_rd     ( dmem_rd    ),
+        .alu_out_1   ( alu_out_1  ),
+        .shift_out_1 ( shift_out_1),
+        .rf_wa_1     ( rf_wa_1    ),
+        .we_reg_2    ( we_reg_2   ),
+        .rf_wd_src_3 ( rf_wd_src_3),
+        .pc_plus4_4  ( pc_plus4_4 ),
+        .mul_lo_wb   ( mul_lo_wb  ),
+        .mul_hi_wb   ( mul_hi_wb  ),
+        .dmem_wb     ( dmem_wb    ),
+        .alu_wb      ( alu_wb     ),
+        .sl_wb       ( sl_wb      ),
+        .rf_wa_2     ( rf_wa_2    ),
+        .we_reg_3    ( we_reg_3   ) 
     );
     
-    
-    /*
-    
-    // --- MEM Logic --- // im here
-    mux6 #(32) rf_wd_mux ( //changed
-            .sel            (rf_wd_src),
-            .a              (alu_out),
-            .b              (rd_dm),
-            .c              (pc_plus4),
-            .d              (shift_out),
-            .e              (mul_lo),
-            .f              (mul_hi),
+       
+     // --- wb --- // 
+    mux6 #(32) rf_wd_mux (
+            .sel            (rf_wd_src3),
+            .a              (alu_wb),
+            .b              (dmem_wb),
+            .c              (pc_plus4_wb),
+            .d              (sl_wb),
+            .e              (mul_lo_wb),
+            .f              (mul_hi_wb),
             .y              (wd_rf)
-        );
+    );
         
 
- */               
- 
 
    endmodule 
