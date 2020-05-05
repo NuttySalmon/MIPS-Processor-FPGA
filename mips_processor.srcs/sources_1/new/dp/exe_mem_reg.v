@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
 
 module exe_mem_reg(
+        input wire             mul_en,
         input  wire             clk,
         input  wire             rst,
         input  wire             we_dm_1, 
@@ -41,11 +42,17 @@ module exe_mem_reg(
             pc_plus4_3 <= pc_plus4_2;
             dem_we <= we_dm_1;
             dmem_wd <= wd_dm;
-            mul_lo_1 <= mul_lo;
-            mul_hi_1 <= mul_hi;
             alu_out_1 <= alu_out;
             shift_out_1 <= shift_out;
             rf_wa_1 <= rf_wa;
+            if(mul_en) begin
+                mul_lo_1 <= mul_lo;
+                mul_hi_1 <= mul_hi;
+            end
+            else begin
+                mul_lo_1 <= mul_lo_1;
+                mul_lo_1 <= mul_lo_1;
+            end
         end
     end
 endmodule
