@@ -4,13 +4,13 @@ module exe_mem_reg(
         input wire             mul_en,
         input  wire             clk,
         input  wire             rst,
+        input  wire        we_reg_1,
         input  wire             we_dm_1, 
         input  wire [2:0]  rf_wd_src_1,
         input  wire [31:0] pc_plus4_2,
         input  wire             wd_dm,
         input  wire [31:0] mul_lo,
         input  wire [31:0] mul_hi,
-        input  wire             zero,
         input  wire [31:0] alu_out,
         input  wire             shift_out,
         input  wire [4:0] rf_wa,  
@@ -22,7 +22,8 @@ module exe_mem_reg(
         output reg  [31:0] mul_hi_1,
         output reg  [31:0] alu_out_1,
         output reg  [31:0] shift_out_1,
-        output reg  [4:0] rf_wa_1
+        output reg  [4:0] rf_wa_1,
+        output reg we_reg_2
 );
 
     always @ (posedge clk, posedge rst) begin
@@ -36,6 +37,7 @@ module exe_mem_reg(
             alu_out_1 <= 0;
             shift_out_1 <= 0;
             rf_wa_1 <= 0;
+            we_reg_2 <= 0;
         end
         else begin
             rf_wd_src_2 <= rf_wd_src_1;
@@ -45,6 +47,7 @@ module exe_mem_reg(
             alu_out_1 <= alu_out;
             shift_out_1 <= shift_out;
             rf_wa_1 <= rf_wa;
+            we_reg_2 <= we_reg_1;
             if(mul_en) begin
                 mul_lo_1 <= mul_lo;
                 mul_hi_1 <= mul_hi;
