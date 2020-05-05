@@ -1,31 +1,33 @@
 module datapath (
-//        input  wire        clk,
-//        input  wire        rst,
+        input  wire        clk,
+        input  wire        rst,
         input  wire        branch,
         input  wire [1:0]  jump_src, 
         input  wire [1:0]  reg_dst, 
         input  wire        we_reg,
+        output wire we_reg_1, we_reg2, we_reg3,
         input  wire        alu_src,
         input  wire        we_dm,
         input  wire [2:0]  rf_wd_src,
+        output wire [2:0]  rf_wd_src_1, rf_wd_src_2,
         input  wire [2:0]  alu_ctrl,
-//        input  wire [4:0]  ra3,
+        input  wire [4:0]  ra3,
         input  wire [31:0] imem_instr,
-//        input  wire [31:0] rd_dm,
+        input  wire [31:0] instrD, instrE,
         input  wire        mul_en, 
         input  wire        shift_lr, 
         input  wire [2:0] dmem_rd,
-        output wire [31:0] pc_current,
-//        output wire [31:0] alu_out,
-        output wire [31:0] wd_dm,
-//        output wire [31:0] rd3
-        output dem_we,
-        output [31:0] dmem_wd,
         input  wire StallF, StallD, FlushE,
         input  wire fwd_ad, fwd_bd,
-        input   wire [1:0] fwd_ae, fwd_be
+        input   wire [1:0] fwd_ae, fwd_be,
+        output wire [31:0] pc_current,
+        output wire [31:0] alu_out,
+        output wire [31:0] wd_dm,
+        output wire [31:0] rd3,
+        output dem_we,
+        output [31:0] dmem_wd,
+        output [4:0]  rf_wa, rf_wa_1 
     );
-
 
     wire        pc_src;
     wire [31:0] pc_pre;
@@ -39,21 +41,20 @@ module datapath (
     wire [31:0] mul_lo, mul_lo_1; 
     wire [31:0] mul_hi, mul_hi_1; 
     wire [31:0] shift_out, shift_out_1;
-    wire [4:0]  rf_wa, rf_wa_1, rf_wa_2;
+    wire [4:0]  rf_wa_2;
     wire        beq;
     wire [31:0] rd1, rd1_1, rd1_2;
     wire [31:0] rd2, rd2_1, rd2_2;
     wire [31:0] instr, instr_2;
     wire [31:0] ad, bd, ae, be;
     wire        we_dm_1;
-    wire [2:0]  rf_wd_src_1, rf_wd_src_2, rf_wd_src_3;
+    wire [2:0]  rf_wd_src_3;
     wire        mul_en_1;
     wire        alu_src_1;
     wire [2:0]  alu_ctrl_1;
-    wire        we_reg_1, we_reg_2, we_reg_3;
     wire        shift_lr_1;
     wire [1:0]  reg_dst_1;
-    wire [31:0] alu_out, alu_out_1;
+    wire [31:0] alu_out_1;
     wire [31:0] alu_pb;
     wire [31:0]  mul_lo_wb;
     wire [31:0]  mul_hi_wb;
@@ -61,7 +62,9 @@ module datapath (
     wire [31:0]  alu_wb   ;
     wire [31:0]  sl_wb    ;
         
-        
+    
+    assign        instrD = instr;
+    assign        instrE = instr_2;
     assign jta = {pc_plus4[31:28], instr[25:0], 2'b00};
     
     // --- IF Logic --- //
@@ -291,7 +294,7 @@ module datapath (
        
      // --- wb --- // 
     mux6 #(32) rf_wd_mux (
-            .sel            (rf_wd_src3),
+            .sel            (rf_wd_src_3),
             .a              (alu_wb),
             .b              (dmem_wb),
             .c              (pc_plus4_wb),

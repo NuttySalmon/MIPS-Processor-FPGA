@@ -11,7 +11,6 @@ module hazard_unit(
     input wire [4:0] rtE,
     input wire [4:0] rf_waE,    
     input wire [4:0] rf_waM,
-    input wire [4:0] rf_waW,
     output wire StallF,
     output wire StallD,
     output wire FlushE,
