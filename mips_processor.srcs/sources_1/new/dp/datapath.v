@@ -24,6 +24,7 @@ module datapath (
         output wire [31:0] alu_out,
         output wire [31:0] wd_dm,
         output wire [31:0] rd3,
+        output wire [31:0] dmem_addr,
         output dem_we,
         output [31:0] dmem_wd,
         output [4:0]  rf_wa, rf_wa_1 
@@ -62,7 +63,7 @@ module datapath (
     wire [31:0]  alu_wb   ;
     wire [31:0]  sl_wb    ;
         
-    
+    assign        dmem_addr = alu_out_1;
     assign        instrD = instr;
     assign        instrE = instr_2;
     assign jta = {pc_plus4[31:28], instr[25:0], 2'b00};

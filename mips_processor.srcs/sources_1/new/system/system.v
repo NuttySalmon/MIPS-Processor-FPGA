@@ -6,8 +6,6 @@ module System (
         output [31:0]  pc_current,
         output [31:0]  instr,
         output [31:0]  rw_addr,
-        output [31:0]  w_data,
-        output [31:0]  rd_dm,
         output [31:0]  rd3,
     
         input  wire [31:0] gpI1, gpI2,
@@ -17,17 +15,16 @@ module System (
     wire [31:0] DMemData, FactData, GPIO;
     wire we1, we2, wem;
     wire [1:0] rd_sel;
- 
+    wire [31:0] w_data;
+    
     mips mips (
             .clk            (clk),
             .rst            (rst),
             .ra3            (ra3),
-            .instr          (instr),
-            .rd_dm          (rd_dm),
-            .we_dm          (we_dm),
+            .imem_instr     (instr),
+            .dmem_addr      (rw_addr),
+            .dmem_rd        (w_data),
             .pc_current     (pc_current),
-            .alu_out        (rw_addr),
-            .wd_dm          (w_data),
             .rd3            (rd3)
         );
     
@@ -80,7 +77,7 @@ module System (
             .b              (DMemData),
             .c              (FactData),
             .d              (GPIO),
-            .y              (rd_dm),
+            .y              (dmem_rd),
             .sel            (rd_sel)
         );
 
