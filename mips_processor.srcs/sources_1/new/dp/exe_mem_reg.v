@@ -26,7 +26,7 @@ module exe_mem_reg(
         output reg we_reg_2
 );
 
-    always @ (posedge clk, posedge rst) begin
+    always @ (posedge clk) begin
         if (rst) begin
             rf_wd_src_2 <= 0;
             pc_plus4_3 <= 0;

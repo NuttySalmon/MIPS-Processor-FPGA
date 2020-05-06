@@ -1,5 +1,6 @@
+`timescale 1ns/1ns
 module tb_system_integration;
-
+    integer     i;
     reg         clk;
     reg         rst;
     wire        we_dm;
@@ -14,13 +15,10 @@ module tb_system_integration;
     System DUT (
             .clk            (clk),
             .rst            (rst),
-            .we_dm          (we_dm),
             .ra3            ('b0),
             .pc_current     (pc_current),
             .instr          (instr),
             .rw_addr        (rw_addr),
-            .w_data         (w_data),
-            .rd_dm          (rd_dm),
             .rd3            (DONT_USE),
             .gpI1           (gpI1), 
             .gpI2           (gpI2),
@@ -30,15 +28,17 @@ module tb_system_integration;
     
     task tick; 
     begin 
-        clk = 1'b0; #5;
-        clk = 1'b1; #5;
+        clk = 1'b0; #100;
+        clk = 1'b1; #100;
     end
     endtask
 
     task reset;
     begin 
         rst = 1'b0; #5;
+        tick;
         rst = 1'b1; #5;
+        tick;
         rst = 1'b0;
     end
     endtask
@@ -47,8 +47,10 @@ module tb_system_integration;
         reset;
         gpI1 = 'h2;
         gpI2 = 'h3;
-        while(pc_current <= 32'h3c) tick;
-         
+        for (i=0; i<5; i=i+1) begin
+            #5; 
+            tick;
+        end
         $finish;
     end
 

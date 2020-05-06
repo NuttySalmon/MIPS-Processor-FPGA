@@ -11,6 +11,7 @@ module hazard_unit(
     input wire [4:0] rtE,
     input wire [4:0] rf_waE,    
     input wire [4:0] rf_waM,
+    input wire [4:0] rf_waW,
     output wire StallF,
     output wire StallD,
     output wire FlushE,
@@ -19,6 +20,8 @@ module hazard_unit(
     output reg [1:0] ForwardAE,
     output reg [1:0] ForwardBE
     );
+    wire branchstall, lwstall;
+ 
     //a little bit confused if branchD && is already implemented in the dp or not?
     assign ForwardAD = branchD && we_regM && (rsD != 0) && (rf_waM == rsD);
     assign ForwardBD = branchD && we_regM && (rtD != 0) && (rf_waM == rtD);
@@ -29,8 +32,6 @@ module hazard_unit(
     assign StallD = lwstall || branchstall;
     assign FlushE = lwstall || branchstall;
 
-    
-    
     always @(*) begin
         if (we_regM && (rsE != 0) && (rf_waM == rsE))
             ForwardAE = 2'b10;

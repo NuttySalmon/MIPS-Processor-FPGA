@@ -20,9 +20,9 @@ module id_exe_reg(
         output  reg [2:0]  rf_wd_src_1,
         output  reg [31:0] sext_imm_2,
         output  reg [31:0] pc_plus4_2,
-        output  reg [31:0] rd1_2,
+        output  reg [31:0] rd1_1,
         output  reg             mul_en_1,
-        output  reg [31:0] rd2_2,
+        output  reg [31:0] rd2_1,
         output  reg             alu_src_1,
         output  reg [2:0]       alu_ctrl_1,
         output  reg             shift_lr_1,
@@ -31,15 +31,15 @@ module id_exe_reg(
         output  reg             we_reg_1
     );
     
-    always @ (posedge rst, posedge clk) begin
+    always @ (posedge clk) begin
         if (rst) begin
             we_dm_1 <= 0; 
             rf_wd_src_1 <= 0;
-            sext_lmm_2 <= 0;
+            sext_imm_2 <= 0;
             pc_plus4_2 <= 0;
-            rd1_2 <= 0;
+            rd1_1 <= 0;
             mul_en_1 <= 0;
-            rd2_2 <= 0;
+            rd2_1 <= 0;
             alu_src_1 <= 0;
             alu_ctrl_1 <= 0;
             shift_lr_1 <= 0;
@@ -50,11 +50,11 @@ module id_exe_reg(
         else begin 
             we_dm_1 <= we_dm; 
             rf_wd_src_1 <= rf_wd_src;
-            sext_lmm_2 <= sext_lmm;
+            sext_imm_2 <= sext_imm;
             pc_plus4_2 <= pc_plus4_1;
-            rd1_2 <= rd1;
+            rd1_1 <= rd1;
             mul_en_1 <= mul_en;
-            rd2_2 <= rd2_2;
+            rd2_1 <= rd2;
             alu_src_1 <= alu_src;
             alu_ctrl_1 <= alu_ctrl;
             shift_lr_1 <= shift_lr;

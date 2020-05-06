@@ -23,7 +23,7 @@ module mem_wb_reg(
         output reg         we_reg_3         
 );
 
-    always @ (posedge clk, posedge rst) begin
+    always @ (posedge clk) begin
         if (rst) begin
             rf_wd_src_3 <= 0;
             pc_plus4_4 <= 0;
@@ -42,7 +42,7 @@ module mem_wb_reg(
             dmem_wb <= dmem_rd;
             alu_wb <= alu_out_1;
             sl_wb <= shift_out_1; //beware of 1 and l looking the same
-            rf_wa_2 <= rf_wa_2;
+            rf_wa_2 <= rf_wa_1;
             we_reg_3 <= we_reg_2;
         end
     end

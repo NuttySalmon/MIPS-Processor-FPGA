@@ -25,8 +25,10 @@ module mips (
     
     assign dm2regE = rf_wd_src_1 == 'b001 ? 1 : 0;
     assign dm2regM = rf_wd_src_2 == 'b001 ? 1 : 0;
-    wire [4:0] rf_waE, rf_waM;
+    wire [4:0] rf_waE, rf_waM, rf_waW;
     wire we_regE;
+    wire fwd_ad, fwd_bd; 
+    wire [1:0] fwd_ae, fwd_be;
 
     datapath dp (
             .clk           (clk       ),  
@@ -38,8 +40,8 @@ module mips (
             .alu_src       (alu_src   ),  
             .we_dm         (we_dm     ),  
             .rf_wd_src     (rf_wd_src ),
-            .rf_wd_src1    (rf_wd_src1),  
-            .rf_wd_src2    (rf_wd_src2),
+            .rf_wd_src_1    (rf_wd_src_1),  
+            .rf_wd_src_2    (rf_wd_src_2),
             .alu_ctrl      (alu_ctrl  ),  
             .ra3           (ra3       ),  
             .imem_instr    (imem_instr), 
@@ -58,7 +60,7 @@ module mips (
             .dem_we      (dem_we  ),                 
             .dmem_wd     (dmem_wd ),
             .dmem_addr   (dmem_addr),
-            .rf_wa(rf_waE), .rf_wa_1(rf_waM)           
+            .rf_wa(rf_waE), .rf_wa_1(rf_waM), .rf_wa_2(rf_waW)           
     );
 
     controlunit cu (
@@ -83,7 +85,7 @@ module mips (
         .branchD(branch),
         .rsD(instrD[25:21]), .rtD(instrD[20:16]),
         .rsE(instrE[25:21]), .rtE(instrE[20:16]),
-        .rf_waE(rf_waE), .rf_waM(rf_waM),
+        .rf_waE(rf_waE), .rf_waM(rf_waM), .rf_waW(rf_waW), 
         .StallF   (StallF),
         .StallD   (StallD),        
         .FlushE   (FlushE),         

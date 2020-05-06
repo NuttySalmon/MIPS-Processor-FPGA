@@ -5,7 +5,7 @@ module datapath (
         input  wire [1:0]  jump_src, 
         input  wire [1:0]  reg_dst, 
         input  wire        we_reg,
-        output wire we_reg_1, we_reg2, we_reg3,
+        output wire we_reg_1, we_reg_2, we_reg_3,
         input  wire        alu_src,
         input  wire        we_dm,
         input  wire [2:0]  rf_wd_src,
@@ -27,7 +27,7 @@ module datapath (
         output wire [31:0] dmem_addr,
         output dem_we,
         output [31:0] dmem_wd,
-        output [4:0]  rf_wa, rf_wa_1 
+        output [4:0]  rf_wa, rf_wa_1, rf_wa_2
     );
 
     wire        pc_src;
@@ -42,10 +42,9 @@ module datapath (
     wire [31:0] mul_lo, mul_lo_1; 
     wire [31:0] mul_hi, mul_hi_1; 
     wire [31:0] shift_out, shift_out_1;
-    wire [4:0]  rf_wa_2;
     wire        beq;
-    wire [31:0] rd1, rd1_1, rd1_2;
-    wire [31:0] rd2, rd2_1, rd2_2;
+    wire [31:0] rd1, rd1_1;
+    wire [31:0] rd2, rd2_1;
     wire [31:0] instr, instr_2;
     wire [31:0] ad, bd, ae, be;
     wire        we_dm_1;
@@ -176,9 +175,9 @@ module datapath (
         .rf_wd_src_1 (rf_wd_src_1),
         .sext_imm_2  (sext_imm_2 ),
         .pc_plus4_2  (pc_plus4_2 ),
-        .rd1_2       (rd1_2      ),
+        .rd1_1       (rd1_1      ),
         .mul_en_1    (mul_en_1   ),
-        .rd2_2       (rd2_2      ),
+        .rd2_1       (rd2_1      ),
         .alu_src_1   (alu_src_1  ),
         .alu_ctrl_1  (alu_ctrl_1 ),
         .shift_lr_1  (shift_lr_1 ),

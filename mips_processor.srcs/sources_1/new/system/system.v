@@ -1,7 +1,6 @@
 module System (
         input          clk,
         input          rst,
-        output         we_dm,
         input  [4:0]   ra3,
         output [31:0]  pc_current,
         output [31:0]  instr,

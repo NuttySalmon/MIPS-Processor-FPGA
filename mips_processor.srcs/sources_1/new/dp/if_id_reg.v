@@ -31,7 +31,7 @@ module if_id_reg(
         output reg  [31:0] instr
     );
     
-    always @ (posedge clk, posedge rst) begin
+    always @ (posedge clk) begin
         if (rst) begin
             pc_plus4_1 <= 0; instr <= 0;
         end

@@ -25,14 +25,14 @@ module fpga_top (
             .clk_5KHz           (clk_5KHz)
         );
 
-//    button_debouncer bd (
-//            .clk                (clk_5KHz),
-//            .button             (button),
-//            .debounced_button   (clk_pb)
-//        );
+    button_debouncer bd (
+            .clk                (clk_5KHz),
+            .button             (button),
+            .debounced_button   (clk_pb)
+        );
 
     System system (
-            .clk                (clk_5KHz),
+            .clk                (clk_pb),
             .rst                (rst),
             .gpI1               ({27'b0, {sel, n[3:0]}}),
             .gpI2               (gpO1),
