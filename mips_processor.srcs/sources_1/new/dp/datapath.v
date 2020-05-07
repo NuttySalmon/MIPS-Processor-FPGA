@@ -28,6 +28,7 @@ module datapath (
         output dem_we,
         output [31:0] dmem_wd,
         output [4:0]  rf_wa, rf_wa_1, rf_wa_2
+        //output [31:0] pc_plus4_1, instr, 
     );
 
     wire        pc_src;
