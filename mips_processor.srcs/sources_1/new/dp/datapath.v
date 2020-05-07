@@ -62,7 +62,8 @@ module datapath (
     wire [31:0]  dmem_wb  ;
     wire [31:0]  alu_wb   ;
     wire [31:0]  sl_wb    ;
-        
+    wire [31:0]  ba;
+    
     assign        dmem_addr = alu_out_1;
     assign        instrD = instr;
     assign        instrE = instr_2;

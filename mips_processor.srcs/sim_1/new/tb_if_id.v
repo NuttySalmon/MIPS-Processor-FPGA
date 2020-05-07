@@ -45,22 +45,19 @@ mips DUT(
         .dmem_rd        (dmem_rd),
         .pc_current     (pc_current),
         .rd3            (rd3),
-        .dmem_addr      (dmem_addr),
-        //.pc_plus4_1   (pc_plus4_1), 
-        .instr  (instr) 
+        .dmem_addr      (dmem_addr)
     );
     task tick; 
     begin 
-        clk = 1'b0; #100;
-        clk = 1'b1; #100;
+        clk = 1'b0; #10;
+        clk = 1'b1; #10;
     end
     endtask
 
     task reset;
     begin 
-        rst = 1'b0; #5;
-        rst = 1'b1; #5;
-        rst = 1'b0;
+        rst = 1'b1; tick;
+        rst = 1'b0; #5; 
     end
     endtask
     
@@ -78,19 +75,38 @@ mips DUT(
     endtask
      
  initial begin
-    imem_instr = 32'h20040002; tick; expected = 32'h20040002; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h20050001; tick; expected = 32'h20050001; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h200b0003; tick; expected = 32'h200b0003; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h200e0008; tick; expected = 32'h200e0008; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h10850004; tick; expected = 32'h10850004; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h012a8820; tick; expected = 32'h012a8820; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h01105822; tick; expected = 32'h01105822; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h01cf8025; tick; expected = 32'h01cf8025; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h1491fffc; tick; expected = 32'h1491fffc; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h01cf5824; tick; expected = 32'h01cf5824; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'hae2d0000; tick; expected = 32'hae2d0000; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-    imem_instr = 32'h8eb20000; tick; expected = 32'h8eb20000; value = imem_instr; test; add_four;//value = pc_plus4_1; test;
-
+ 
+    //--early branch & branch stall--//
+    reset;
+    imem_instr = 'h20090123; tick; //addi t1 zero 0x123
+    imem_instr = 'h200A0456; tick; //addi t2, zero, 0x456
+    imem_instr = 'h0149402A; tick; // slt t0, t2, t1
+    imem_instr = 'h0x11000555; tick; //beq t0 $zero 0x555
+    tick;
+    tick;
+    
+    //--fwd_bd--//
+    reset;
+    imem_instr = 'h0149402A; tick; // slt t0, t2, t1
+    imem_instr = 'h0x10080555; tick; //beq $zero, t0  0x555
+    tick;
+    tick;
+    
+    //--branch not taken--//
+    reset;
+    imem_instr = 'h0012A402A; tick; //  slt t0, t1, t2
+    imem_instr = 'h0x11000555; tick; //beq t0 $zero 0x555
+    tick;
+    tick;
+    
+    //----//
+    reset;
+    imem_instr = 'h0149402A; tick; // slt t0, t2, t1
+    imem_instr = 'h0x11000555; tick; //beq t0 $zero 0x555
+    tick;
+    tick;
+    
+    $finish; 
 end
 
 

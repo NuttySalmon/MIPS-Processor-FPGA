@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_if_id_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_if_id" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="130000fs"></ZoomStartTime>
+      <ZoomEndTime time="400001fs"></ZoomEndTime>
+      <Cursor1Time time="355000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="130"></NameColumnWidth>
+      <ValueColumnWidth column_width="71"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="19" />
+   <wvobject fp_name="/tb_if_id/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/ra3" type="array">
+      <obj_property name="ElementShortName">ra3[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ra3[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/imem_instr" type="array">
+      <obj_property name="ElementShortName">imem_instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imem_instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/pc_current" type="array">
+      <obj_property name="ElementShortName">pc_current[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_current[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/dmem_rd" type="array">
+      <obj_property name="ElementShortName">dmem_rd[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_rd[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/dmem_addr" type="array">
+      <obj_property name="ElementShortName">dmem_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/instr" type="array">
+      <obj_property name="ElementShortName">instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/rd3" type="array">
+      <obj_property name="ElementShortName">rd3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd3[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/pc_plus_4_1" type="array">
+      <obj_property name="ElementShortName">pc_plus_4_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_plus_4_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/value" type="array">
+      <obj_property name="ElementShortName">value[31:0]</obj_property>
+      <obj_property name="ObjectShortName">value[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/expected" type="array">
+      <obj_property name="ElementShortName">expected[31:0]</obj_property>
+      <obj_property name="ObjectShortName">expected[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/error_count" type="array">
+      <obj_property name="ElementShortName">error_count[31:0]</obj_property>
+      <obj_property name="ObjectShortName">error_count[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/n" type="array">
+      <obj_property name="ElementShortName">n[31:0]</obj_property>
+      <obj_property name="ObjectShortName">n[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/pc_reg/en" type="logic">
+      <obj_property name="ElementShortName">en</obj_property>
+      <obj_property name="ObjectShortName">en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/if_id/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/if_id/en" type="logic">
+      <obj_property name="ElementShortName">en</obj_property>
+      <obj_property name="ObjectShortName">en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/fwd_ad" type="logic">
+      <obj_property name="ElementShortName">fwd_ad</obj_property>
+      <obj_property name="ObjectShortName">fwd_ad</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/fwd_bd" type="logic">
+      <obj_property name="ElementShortName">fwd_bd</obj_property>
+      <obj_property name="ObjectShortName">fwd_bd</obj_property>
+   </wvobject>
+</wave_config>
