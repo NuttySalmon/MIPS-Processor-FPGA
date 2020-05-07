@@ -7,6 +7,7 @@ module mips (
         output wire [31:0] pc_current,
         output wire [31:0] rd3,
         output wire [31:0] dmem_addr
+        //output wire [31:0] pc_plus4_1, instr 
     );
     
     wire       branch;
@@ -60,7 +61,8 @@ module mips (
             .dem_we      (dem_we  ),                 
             .dmem_wd     (dmem_wd ),
             .dmem_addr   (dmem_addr),
-            .rf_wa(rf_waE), .rf_wa_1(rf_waM), .rf_wa_2(rf_waW)           
+            .rf_wa(rf_waE), .rf_wa_1(rf_waM), .rf_wa_2(rf_waW)        
+            //.instr(instr), .pc_plus4_1(pc_plus4_1)    
     );
 
     controlunit cu (
