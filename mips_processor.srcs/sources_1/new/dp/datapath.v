@@ -264,7 +264,8 @@ module datapath (
       .alu_out_1    (alu_out_1  ),   
       .shift_out_1  (shift_out_1),   
       .rf_wa_1      (rf_wa_1    ),   
-      .we_reg_2     (we_reg_2   )
+      .we_reg_2     (we_reg_2   ),
+      .instr_2      (instr_2)
     );
 
     // --- MEM --- //

@@ -43,14 +43,18 @@ module tb_system_integration;
     
     initial begin
         reset;
-        gpI1 = 'h5;
-        for (i=1; i<51; i=i+1) begin
+        gpI1 = 'h15;
+        for (i=1; i<35; i=i+1) begin
             #5; 
             tick;
         end
         tick;
         tick;
         tick;
+        tick;
+        tick;
+        tick;
+        tick; tick; tick; tick;
         $finish;
     end
 

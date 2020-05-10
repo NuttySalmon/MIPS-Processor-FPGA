@@ -17,7 +17,7 @@ module regfile (
     
     initial begin
         for (n = 0; n < 32; n = n + 1) rf[n] = 32'h0;
-        rf[29] = 32'h100; // Initialze $sp
+        rf[29] = 32'h0FC; // Initialze $sp
     end
     
     always @ (posedge clk) begin

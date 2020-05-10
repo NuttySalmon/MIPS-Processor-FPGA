@@ -27,11 +27,11 @@ module hazard_unit(
     assign ForwardAD = branchD && we_regM && (rsD != 0) && (rf_waM == rsD);
     assign ForwardBD = branchD && we_regM && (rtD != 0) && (rf_waM == rtD);
     assign branchstall = (branchD && we_regE && ((rf_waE == rsD) || (rf_waE == rtD))) ||
-                         (branchD && dm2regM  && ((rf_waM == rsD) || (rf_waM == rtD)));
+                         (branchD && (dm2regM || dm2regW)  && ((rf_waM == rsD) || (rf_waM == rtD)));
     assign lw_after_branch = branchD && dm2regW && ((rf_waM == rsD) || (rf_waM == rtD));
     assign lwstall = ((rsD == rtE) || (rtD == rtE)) && dm2regE;
     assign StallF = lwstall || branchstall;
-    assign StallD = lwstall || branchstall || lw_after_branch;
+    assign StallD = lwstall || branchstall;
     assign FlushE = lwstall || branchstall;
 
     always @(we_regM, we_regW, rsE, rf_waM, rf_waW) begin
