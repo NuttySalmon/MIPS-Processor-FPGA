@@ -3,7 +3,7 @@ set_property -dict {PACKAGE_PIN W5 IOSTANDARD LVCMOS33}           [get_ports {cl
 create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports {clk}];
 
 # Buttons
-#set_property -dict {PACKAGE_PIN U18 IOSTANDARD LVCMOS33} [get_ports {button}]; # Center Button
+set_property -dict {PACKAGE_PIN U18 IOSTANDARD LVCMOS33} [get_ports {button}]; # Center Button
 set_property -dict {PACKAGE_PIN W19 IOSTANDARD LVCMOS33} [get_ports {rst}]; # Left Button
 
 # Switches

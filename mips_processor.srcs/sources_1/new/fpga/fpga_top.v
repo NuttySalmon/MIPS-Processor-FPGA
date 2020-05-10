@@ -1,7 +1,7 @@
 module fpga_top (
         input  wire       clk,
         input  wire       rst,
-//        input  wire       button,
+        input  wire       button,
         input  wire       sel,
         input  wire [3:0] n,
         output wire       dispSe,
