@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="130000fs"></ZoomStartTime>
-      <ZoomEndTime time="400001fs"></ZoomEndTime>
-      <Cursor1Time time="355000fs"></Cursor1Time>
+      <ZoomStartTime time="5315973fs"></ZoomStartTime>
+      <ZoomEndTime time="5508251fs"></ZoomEndTime>
+      <Cursor1Time time="5388135fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="130"></NameColumnWidth>
-      <ValueColumnWidth column_width="71"></ValueColumnWidth>
+      <ValueColumnWidth column_width="67"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="19" />
+   <WVObjectSize size="26" />
    <wvobject fp_name="/tb_if_id/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -95,5 +95,33 @@
    <wvobject fp_name="/tb_if_id/DUT/dp/fwd_bd" type="logic">
       <obj_property name="ElementShortName">fwd_bd</obj_property>
       <obj_property name="ObjectShortName">fwd_bd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/fwd_ae" type="array">
+      <obj_property name="ElementShortName">fwd_ae[1:0]</obj_property>
+      <obj_property name="ObjectShortName">fwd_ae[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/fwd_be" type="array">
+      <obj_property name="ElementShortName">fwd_be[1:0]</obj_property>
+      <obj_property name="ObjectShortName">fwd_be[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/StallF" type="logic">
+      <obj_property name="ElementShortName">StallF</obj_property>
+      <obj_property name="ObjectShortName">StallF</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/StallD" type="logic">
+      <obj_property name="ElementShortName">StallD</obj_property>
+      <obj_property name="ObjectShortName">StallD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/dp/FlushE" type="logic">
+      <obj_property name="ElementShortName">FlushE</obj_property>
+      <obj_property name="ObjectShortName">FlushE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/HU/branchstall" type="logic">
+      <obj_property name="ElementShortName">branchstall</obj_property>
+      <obj_property name="ObjectShortName">branchstall</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_if_id/DUT/HU/lwstall" type="logic">
+      <obj_property name="ElementShortName">lwstall</obj_property>
+      <obj_property name="ObjectShortName">lwstall</obj_property>
    </wvobject>
 </wave_config>

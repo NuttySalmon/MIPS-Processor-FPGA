@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 05/06/2020 11:17:57 AM
-// Design Name: 
-// Module Name: tb_if_id
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module tb_if_id;
     reg         clk;
@@ -49,8 +29,8 @@ mips DUT(
     );
     task tick; 
     begin 
-        clk = 1'b0; #10;
-        clk = 1'b1; #10;
+        clk = 1'b0; #100;
+        clk = 1'b1; #100;
     end
     endtask
 
@@ -81,31 +61,54 @@ mips DUT(
     imem_instr = 'h20090123; tick; //addi t1 zero 0x123
     imem_instr = 'h200A0456; tick; //addi t2, zero, 0x456
     imem_instr = 'h0149402A; tick; // slt t0, t2, t1
-    imem_instr = 'h0x11000555; tick; //beq t0 $zero 0x555
+    imem_instr = 'h11000555; tick; //beq t0 $zero 0x555
     tick;
-    tick;
+    tick; 
     
-    //--fwd_bd--//
+    //--fwd bd ad--//
     reset;
     imem_instr = 'h0149402A; tick; // slt t0, t2, t1
-    imem_instr = 'h0x10080555; tick; //beq $zero, t0  0x555
+    imem_instr = 'h10080555; tick; //beq $zero, t0  0x555
     tick;
     tick;
     
     //--branch not taken--//
     reset;
-    imem_instr = 'h0012A402A; tick; //  slt t0, t1, t2
-    imem_instr = 'h0x11000555; tick; //beq t0 $zero 0x555
+    imem_instr = 'h012A402A; tick; //slt t0, t1, t2
+    imem_instr = 'h11000555; tick; //beq t0 $zero 0x555
     tick;
     tick;
     
-    //----//
+    //--fwd ae be--//
     reset;
-    imem_instr = 'h0149402A; tick; // slt t0, t2, t1
-    imem_instr = 'h0x11000555; tick; //beq t0 $zero 0x555
+    imem_instr = 'h012A4020; tick; //add t0 t1 t2
+    imem_instr = 'h010A5820; tick; //add t3 t0 t2
+    imem_instr = 'h012A4020; tick; //add t0 t1 t2
+    tick;
     tick;
     tick;
     
+        
+    //--fwd ae be--//
+    reset;
+    dmem_rd = 'h123;
+    imem_instr = 'h8C080040; tick; //LW $t0, 0x40(zero)
+    imem_instr = 'h010A5820; tick; //add t3, t0, t2 
+    tick; //add t0 t1 t2
+    tick;
+    tick;
+    tick;
+            
+    //--fwd ae be--//
+    reset;
+    imem_instr = 'h10000555; tick; //beq zero, zero, 0x555
+    //imem_instr = 'h08000555; tick; 
+    imem_instr = 'h014A5822; tick; //sub t3, t2, t2 
+    imem_instr = 'h014A0019; tick; //multu t2, t2
+    imem_instr = 'h00005812; tick; //mflo t3
+    tick;
+    tick;
+    tick;
     $finish; 
 end
 

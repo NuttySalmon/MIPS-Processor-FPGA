@@ -9,23 +9,22 @@ module datapath (
         input  wire        alu_src,
         input  wire        we_dm,
         input  wire [2:0]  rf_wd_src,
-        output wire [2:0]  rf_wd_src_1, rf_wd_src_2,
+        output wire [2:0]  rf_wd_src_1, rf_wd_src_2, rf_wd_src_3, 
         input  wire [2:0]  alu_ctrl,
         input  wire [4:0]  ra3,
         input  wire [31:0] imem_instr,
         input  wire [31:0] instrD, instrE,
         input  wire        mul_en, 
         input  wire        shift_lr, 
-        input  wire [2:0] dmem_rd,
+        input  wire [31:0] dmem_rd,
         input  wire StallF, StallD, FlushE,
         input  wire fwd_ad, fwd_bd,
         input   wire [1:0] fwd_ae, fwd_be,
         output wire [31:0] pc_current,
         output wire [31:0] alu_out,
-        output wire [31:0] wd_dm,
         output wire [31:0] rd3,
         output wire [31:0] dmem_addr,
-        output dem_we,
+        output dmem_we,
         output [31:0] dmem_wd,
         output [4:0]  rf_wa, rf_wa_1, rf_wa_2
         //output [31:0] pc_plus4_1, instr, 
@@ -49,7 +48,6 @@ module datapath (
     wire [31:0] instr, instr_2;
     wire [31:0] ad, bd, ae, be;
     wire        we_dm_1;
-    wire [2:0]  rf_wd_src_3;
     wire        mul_en_1;
     wire        alu_src_1;
     wire [2:0]  alu_ctrl_1;
@@ -244,6 +242,7 @@ module datapath (
        );
 
     exe_mem_reg exe_mem(
+      .dmem_we      (dmem_we),
       .mul_en       (mul_en     ),
       .clk          (clk        ),
       .rst          (rst        ),
@@ -251,15 +250,14 @@ module datapath (
       .we_dm_1      (we_dm_1    ),
       .rf_wd_src_1  (rf_wd_src_1),   
       .pc_plus4_2   (pc_plus4_2 ),   
-      .wd_dm        (wd_dm      ),
+      .wd_dm        (be),
       .mul_lo       (mul_lo     ),   
       .mul_hi       (mul_hi     ), 
       .alu_out      (alu_out    ), 
       .shift_out    (shift_out  ),
       .rf_wa        (rf_wa      ),
       .rf_wd_src_2  (rf_wd_src_2),   
-      .pc_plus4_3   (pc_plus4_3 ),   
-      .dem_we       (dem_we     ),
+      .pc_plus4_3   (pc_plus4_3 ),
       .dmem_wd      (dmem_wd    ),   
       .mul_lo_1     (mul_lo_1   ),   
       .mul_hi_1     (mul_hi_1   ),   

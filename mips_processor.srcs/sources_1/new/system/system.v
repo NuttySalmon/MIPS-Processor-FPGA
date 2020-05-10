@@ -13,8 +13,9 @@ module System (
 
     wire [31:0] DMemData, FactData, GPIO;
     wire we1, we2, wem;
+    wire dmem_we;
     wire [1:0] rd_sel;
-    wire [31:0] w_data;
+    wire [31:0] w_data, dmem_rd;
     
     mips mips (
             .clk            (clk),
@@ -22,14 +23,16 @@ module System (
             .ra3            (ra3),
             .imem_instr     (instr),
             .dmem_addr      (rw_addr),
-            .dmem_rd        (w_data),
+            .dmem_rd        (dmem_rd),
+            .dmem_wd        (w_data),
             .pc_current     (pc_current),
-            .rd3            (rd3)
+            .rd3            (rd3),
+            .dmem_we          (dmem_we)
         );
     
     AddressDecoder ad_dec(
             .a(rw_addr[11:2]),
-            .we(we_dm),
+            .we(dmem_we),
             .we1(we1),
             .we2(we2),
             .wem(wem),

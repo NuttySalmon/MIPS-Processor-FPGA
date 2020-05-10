@@ -7,8 +7,6 @@ module tb_system_integration;
     wire [31:0] pc_current;
     wire [31:0] instr;
     wire [31:0] rw_addr;
-    wire [31:0] w_data;
-    wire [31:0] rd_dm;
     reg [31:0] gpI1, gpI2;
     wire [31:0] gpO1, gpO2;
     wire [31:0] DONT_USE;
@@ -45,12 +43,14 @@ module tb_system_integration;
     
     initial begin
         reset;
-        gpI1 = 'h2;
-        gpI2 = 'h3;
-        for (i=0; i<5; i=i+1) begin
+        gpI1 = 'h5;
+        for (i=1; i<51; i=i+1) begin
             #5; 
             tick;
         end
+        tick;
+        tick;
+        tick;
         $finish;
     end
 
