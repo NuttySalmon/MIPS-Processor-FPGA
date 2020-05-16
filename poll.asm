@@ -17,5 +17,5 @@ or $t3, $t3, $t5
 lw $t5, 0x080C($0)
 sw $t3, 0x0908($0) 
 sw $t5, 0x090C($0) 
-done:
 j fact 
+nop

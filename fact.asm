@@ -10,6 +10,7 @@ and $a0, $t2, $s0
 slt $t5, $s3, $a0
 beq $t5, $s1, end
 jal cal
+nop
 
 end:
 and $t3, $t2, $s2
@@ -17,6 +18,7 @@ or $t3, $t3, $t5
 sw $t3, 0x0908($0)
 sw $v0, 0x090C($0)
 j fact
+nop
 
 cal:
 addi $sp, $sp, -8 
@@ -28,6 +30,7 @@ beq $t0, $0, else
 addi $v0, $0, 1 # yes - return 1
 addi $sp, $sp, 8 # restore $sp
 jr $ra # return
+nop
 
 else:
 addi $a0, $a0, -1 
@@ -38,3 +41,4 @@ addi $sp, $sp, 8
 multu $a0, $v0
 mflo $v0 
 jr $ra
+nop
