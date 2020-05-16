@@ -8,14 +8,8 @@ module tb_if_id;
     wire [31:0] pc_current;
     reg [31:0] dmem_rd;
     wire [31:0] dmem_addr;
-    wire [31:0] instr;
     wire [31:0] rd3;
-    wire [31:0] pc_plus_4_1;
-    reg [31:0] value;
-    reg [31:0] expected;
-    
-    integer error_count = 0;
-    integer n = 1;
+
 
 mips DUT(
         .clk            (clk),
@@ -41,18 +35,6 @@ mips DUT(
     end
     endtask
     
-    task test;
-        if (expected != value) begin
-            $display("ERROR");
-            error_count = error_count + 1;
-        end
-    endtask
-    
-    task add_four;
-        begin
-            expected = 4 * n; n = n + 1;
-        end
-    endtask
      
  initial begin
  
@@ -89,7 +71,7 @@ mips DUT(
     tick;
     
         
-    //--fwd ae be--//
+    //--fwd ae be load word--//
     reset;
     dmem_rd = 'h123;
     imem_instr = 'h8C080040; tick; //LW $t0, 0x40(zero)

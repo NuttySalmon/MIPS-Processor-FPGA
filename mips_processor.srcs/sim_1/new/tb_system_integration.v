@@ -26,35 +26,33 @@ module tb_system_integration;
     
     task tick; 
     begin 
-        clk = 1'b0; #100;
-        clk = 1'b1; #100;
+        clk = 1'b0; #5;
+        clk = 1'b1; #5;
     end
     endtask
 
     task reset;
     begin 
-        rst = 1'b0; #5;
-        tick;
-        rst = 1'b1; #5;
-        tick;
+        rst = 1'b1; tick;
         rst = 1'b0;
     end
     endtask
     
     initial begin
         reset;
-        gpI1 = 'h15;
-        for (i=1; i<35; i=i+1) begin
-            #5; 
+        gpI1 = 'h5;  //factorial n=5
+        for (i=1; i<36; i=i+1) begin
             tick;
         end
-        tick;
-        tick;
-        tick;
-        tick;
-        tick;
-        tick;
-        tick; tick; tick; tick;
+        
+        gpI1 = 'h19;  //upper bit of factorial n=9
+        for (i=1; i<43; i=i+1) begin 
+            tick;
+        end
+        gpI1 = 'hD;  // n=13
+        for (i=1; i<27; i=i+1) begin 
+            tick;
+        end
         $finish;
     end
 
