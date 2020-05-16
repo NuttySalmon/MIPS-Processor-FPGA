@@ -13,7 +13,7 @@ module mem_wb_reg(
         input  wire  [4:0]  rf_wa_1,      
         input  wire         we_reg_2,
         output reg   [2:0]  rf_wd_src_3,
-        output reg   [31:0] pc_plus4_4,
+        output reg   [31:0] pc_plus4_wb,
         output reg   [31:0] mul_lo_wb,
         output reg   [31:0] mul_hi_wb,
         output reg   [31:0] dmem_wb,
@@ -26,7 +26,7 @@ module mem_wb_reg(
     always @ (posedge clk) begin
         if (rst) begin
             rf_wd_src_3 <= 0;
-            pc_plus4_4 <= 0;
+            pc_plus4_wb <= 0;
             mul_lo_wb <= 0;
             mul_hi_wb <= 0;
             dmem_wb <= 0;
@@ -36,7 +36,7 @@ module mem_wb_reg(
         end
         else begin
             rf_wd_src_3 <= rf_wd_src_2;
-            pc_plus4_4 <= pc_plus4_3;
+            pc_plus4_wb <= pc_plus4_3;
             mul_lo_wb <= mul_lo_1;
             mul_hi_wb <= mul_hi_1;
             dmem_wb <= dmem_rd;

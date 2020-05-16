@@ -16,6 +16,9 @@ module controlunit (
     wire [1:0] alu_op;
     wire [1:0] rf_wd;
     wire jump, jr;
+    wire we_reg_md;
+    
+    assign we_reg = we_reg_md & ~jr;
     assign jump_src = {jr, jump};
     
     maindec md (
@@ -23,7 +26,7 @@ module controlunit (
         .branch         (branch),
         .jump           (jump),
         .reg_dst        (reg_dst),
-        .we_reg         (we_reg),
+        .we_reg         (we_reg_md),
         .alu_src        (alu_src),
         .we_dm          (we_dm),
         .rf_wd          (rf_wd),

@@ -57,7 +57,7 @@ module exe_mem_reg(
                 mul_hi_1 <= mul_hi;
             end
             else begin
-                mul_lo_1 <= mul_lo_1;
+                mul_hi_1 <= mul_hi_1;
                 mul_lo_1 <= mul_lo_1;
             end
         end

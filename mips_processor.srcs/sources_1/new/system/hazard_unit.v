@@ -21,14 +21,13 @@ module hazard_unit(
     output reg [1:0] ForwardAE,
     output reg [1:0] ForwardBE
     );
-    wire branchstall, lwstall, lw_after_branch;
+    wire branchstall, lwstall;
  
     //a little bit confused if branchD && is already implemented in the dp or not?
     assign ForwardAD = branchD && we_regM && (rsD != 0) && (rf_waM == rsD);
     assign ForwardBD = branchD && we_regM && (rtD != 0) && (rf_waM == rtD);
     assign branchstall = (branchD && we_regE && ((rf_waE == rsD) || (rf_waE == rtD))) ||
                          (branchD && (dm2regM || dm2regW)  && ((rf_waM == rsD) || (rf_waM == rtD)));
-    assign lw_after_branch = branchD && dm2regW && ((rf_waM == rsD) || (rf_waM == rtD));
     assign lwstall = ((rsD == rtE) || (rtD == rtE)) && dm2regE;
     assign StallF = lwstall || branchstall;
     assign StallD = lwstall || branchstall;

@@ -33,7 +33,7 @@ module datapath (
     wire        pc_src;
     wire [31:0] pc_pre;
 
-    wire [31:0] pc_plus4, pc_plus4_1, pc_plus4_2, pc_plus4_3, pc_plus4_4;
+    wire [31:0] pc_plus4, pc_plus4_1, pc_plus4_2, pc_plus4_3, pc_plus4_wb;
     wire [31:0] pc_next;
     wire [31:0] sext_imm, sext_imm_2;
     wire [31:0] bta;
@@ -92,7 +92,7 @@ module datapath (
             .sel            (jump_src),
             .a              (pc_pre),
             .b              (jta),
-            .c              (rd2),
+            .c              (rd1),
             .y              (pc_next)
         );
         
@@ -243,7 +243,7 @@ module datapath (
 
     exe_mem_reg exe_mem(
       .dmem_we      (dmem_we),
-      .mul_en       (mul_en     ),
+      .mul_en       (mul_en_1   ),
       .clk          (clk        ),
       .rst          (rst        ),
       .we_reg_1     (we_reg_1   ),   
@@ -282,7 +282,7 @@ module datapath (
         .rf_wa_1     ( rf_wa_1    ),
         .we_reg_2    ( we_reg_2   ),
         .rf_wd_src_3 ( rf_wd_src_3),
-        .pc_plus4_4  ( pc_plus4_4 ),
+        .pc_plus4_wb  ( pc_plus4_wb ),
         .mul_lo_wb   ( mul_lo_wb  ),
         .mul_hi_wb   ( mul_hi_wb  ),
         .dmem_wb     ( dmem_wb    ),
