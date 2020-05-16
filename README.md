@@ -4,3 +4,14 @@
 * Memory mapped factorial accelerator and GPIO wrapper.
 
 * Developed in Xilinx Vivado 2019.2 and tested on the Basys 3 Artix-7 FPGA Trainer Board.
+
+
+
+#### Pipline datapath
+
+
+<img src="diagrams/pipline_datapath.png"> </img>
+
+#### System integration
+
+<img src="diagrams/system_integration.png"> </img>
