@@ -42,8 +42,8 @@ module tb_fact_top;
         );
     task tick; 
     begin 
-        tb_clk = 1'b0; #5;
-        tb_clk = 1'b1; #5;
+        #5; tb_clk = 1'b1; 
+        #5; tb_clk = 1'b0;
     end
     endtask
 
@@ -66,22 +66,22 @@ module tb_fact_top;
         factorial_result = 1;
         for(i = 1; i <=n; i=i+1)
             factorial_result =  factorial_result  * i;
-        #5;
     end
     endtask
 
     initial begin 
-        for (n=0; n <= 12; n=n+1) begin
+        for (n=0; n <= 13; n=n+1) begin
             reset; // reset
             
             // read go
+            expected = 'b0; 
             tb_WE = 1'b0;
             tb_A = 2'b01;
             tb_WD = 1'b1;
             tick;
             
             // check go
-            expected = 'b0; check;
+            check;
             
             //set n
             tb_WE = 1'b1; 
@@ -90,11 +90,12 @@ module tb_fact_top;
             tick;
             
             // read n
+            expected = n;
             tb_WE = 1'b1;
             tick;
             
             //check n
-            expected = n; check;
+            check;
             
             //assert go
             tb_WD = 1'b1;
@@ -102,26 +103,35 @@ module tb_fact_top;
             tick;
             
             // read go
+            
             tb_WE = 1'b0;
             tick;
             
             //check go
-            expected = 'b1; check;
+            expected = 'b1; 
+            check;
             
             //tick while not done or error
             tb_A = 2'b10; #5
             while (tb_RD == 'b0)
                 tick;
-            
-            //read result
-            tb_A = 2'b11;
-            tick;
-            
-            cal_fact;
-            expected = factorial_result; check;
+ 
+            if (tb_RD == 01) begin
+                cal_fact;
+                expected = factorial_result; 
+                //read result
+                tb_A = 2'b11;
+                tick;
+                
+                
+                check;
+            end
+            else if (n < 13) begin
+                $display("ERROR");
+                error = error +1;
+            end
         end
-        
-        //13
+
         $finish;
     end
 
